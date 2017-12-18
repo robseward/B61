@@ -1,0 +1,6 @@
+framework module Pods_BusRider {
+  umbrella header "Pods-BusRider-umbrella.h"
+
+  export *
+  module * { export * }
+}
