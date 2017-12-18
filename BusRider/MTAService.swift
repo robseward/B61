@@ -10,13 +10,14 @@ import Foundation
 import Moya
 import Alamofire
 
+
 enum MTAService {
     case stopsForLocation(lat: Float, lon: Float, latSpan: Float, lonSpan: Float)
 }
 
 extension MTAService: TargetType {
     var baseURL: URL {
-        return URL(string: "http://bustime.mta.info/api/where/")!
+        return URL(string: "https://bustime.mta.info/api/where/")!
     }
     
     var path: String {
@@ -40,7 +41,7 @@ extension MTAService: TargetType {
     var task: Task {
         switch self {
         case .stopsForLocation(let lat, let lon, let latSpan, let lonSpan):
-            return Task.requestParameters(parameters: ["lat" : lat, "lon" : lon, "latSpan" : latSpan, "lonSpan" : lonSpan], encoding: URLEncoding.queryString)
+            return Task.requestParameters(parameters: ["lat" : lat, "lon" : lon, "latSpan" : latSpan, "lonSpan" : lonSpan, "key" : apiKey], encoding: URLEncoding.queryString)
         }
     }
     
@@ -48,5 +49,16 @@ extension MTAService: TargetType {
         return ["Content-type": "application/json"]
     }
     
+    var apiKey: String {
+        if let path = Bundle.main.path(forResource: "keys", ofType: "plist"),
+            let keys = NSDictionary(contentsOfFile: path),
+            let apiKey = keys["mtaKey"] as? String
+        {
+            return apiKey
+        } else {
+            assert(false, "Key not set in keys plist")
+            return ""
+        }
+    }
     
 }
