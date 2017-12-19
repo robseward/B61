@@ -34,7 +34,50 @@ extension MTAService: TargetType {
     
     var sampleData: Data {
         switch self {
-        case .stopsForLocation(_,_,_,_): return "".data(using: String.Encoding.utf8)!
+        case .stopsForLocation(_,_,_,_):
+            return """
+            {
+                "code": 200,
+                "currentTime": 1513635655465,
+                "data": {
+                    "limitExceeded": false,
+                    "stops": [
+                        {
+                            "code": "303021",
+                            "direction": "E",
+                            "id": "MTA_303021",
+                            "lat": 40.687856,
+                            "locationType": 0,
+                            "lon": -73.968348,
+                            "name": "LAFAYETTE AV/VANDERBILT AV",
+                            "routes": [
+                                {
+                                    "agency": {
+                                        "disclaimer": "",
+                                        "id": "MTA NYCT",
+                                        "lang": "en",
+                                        "name": "MTA New York City Transit",
+                                        "phone": "718-330-1234",
+                                        "privateService": false,
+                                        "timezone": "America/New_York",
+                                        "url": "http://www.mta.info"
+                                    },
+                                    "color": "00AEEF",
+                                    "description": "via DeKalb & Lafayette Av",
+                                    "id": "MTA NYCT_B38",
+                                    "longName": "Ridgewood - Downtown Brooklyn",
+                                    "shortName": "B38",
+                                    "textColor": "FFFFFF",
+                                    "type": 3,
+                                    "url": "http://web.mta.info/nyct/bus/schedule/bkln/b038cur.pdf"
+                                }
+                            ],
+                            "wheelchairBoarding": "UNKNOWN"
+                        }
+                    ]
+                }
+            }
+            """.data(using: String.Encoding.utf8)!
         }
     }
     
