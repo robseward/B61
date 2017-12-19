@@ -60,5 +60,4 @@ extension MTAService: TargetType {
             return ""
         }
     }
-    
 }

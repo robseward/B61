@@ -8,6 +8,7 @@ target 'BusRider' do
   # Pods for BusRider
   pod 'Alamofire', '~> 4.5'
   pod 'Moya'
+  pod 'SwiftyJSON'
 
   target 'BusRiderTests' do
     inherit! :search_paths
