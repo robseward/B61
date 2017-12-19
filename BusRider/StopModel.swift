@@ -10,6 +10,20 @@ import Foundation
 import Moya_SwiftyJSONMapper
 import SwiftyJSON
 
+class StopList : ALSwiftyJSONAble {
+    let stops: [StopModel]
+    
+    required init?(jsonData: JSON) {
+        var stops = [StopModel]()
+        let stopArray = jsonData["data"]["stops"]
+        for (_,subJson):(String, JSON) in stopArray {
+            if let stop = StopModel(jsonData: subJson) {
+                stops.append(stop)
+            }
+        }
+        self.stops = stops
+    }
+}
 
 class StopModel : ALSwiftyJSONAble {
     let code: String
