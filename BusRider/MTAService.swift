@@ -61,3 +61,7 @@ extension MTAService: TargetType {
         }
     }
 }
+
+extension MoyaProvider {
+    
+}

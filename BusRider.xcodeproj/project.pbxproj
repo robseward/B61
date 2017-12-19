@@ -19,6 +19,7 @@
 		D4248E9F1FE440EA00E1B342 /* BusRiderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4248E9E1FE440EA00E1B342 /* BusRiderUITests.swift */; };
 		D4612D9A1FE86A8F00EF30C2 /* MTAService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4612D991FE86A8F00EF30C2 /* MTAService.swift */; };
 		D4612D9C1FE8794B00EF30C2 /* keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = D4612D9B1FE8794B00EF30C2 /* keys.plist */; };
+		D4612D9E1FE8B33200EF30C2 /* StopModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4612D9D1FE8B33200EF30C2 /* StopModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		D4248EA01FE440EA00E1B342 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4612D991FE86A8F00EF30C2 /* MTAService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTAService.swift; sourceTree = "<group>"; };
 		D4612D9B1FE8794B00EF30C2 /* keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = keys.plist; sourceTree = "<group>"; };
+		D4612D9D1FE8B33200EF30C2 /* StopModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopModel.swift; sourceTree = "<group>"; };
 		DA3F103A1A90A856D32C89DB /* Pods_BusRiderUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BusRiderUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F92E467E494AA3856BFED2E4 /* Pods_BusRiderTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BusRiderTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -130,6 +132,7 @@
 			children = (
 				D4248E7E1FE440EA00E1B342 /* AppDelegate.swift */,
 				D4248E801FE440EA00E1B342 /* ViewController.swift */,
+				D4612D9D1FE8B33200EF30C2 /* StopModel.swift */,
 				D4248E821FE440EA00E1B342 /* Main.storyboard */,
 				D4248E851FE440EA00E1B342 /* Assets.xcassets */,
 				D4248E871FE440EA00E1B342 /* LaunchScreen.storyboard */,
@@ -320,14 +323,18 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-BusRider/Pods-BusRider-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya-SwiftyJSONMapper/Moya_SwiftyJSONMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya_SwiftyJSONMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -472,6 +479,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4612D9A1FE86A8F00EF30C2 /* MTAService.swift in Sources */,
+				D4612D9E1FE8B33200EF30C2 /* StopModel.swift in Sources */,
 				D4248E811FE440EA00E1B342 /* ViewController.swift in Sources */,
 				D4248E7F1FE440EA00E1B342 /* AppDelegate.swift in Sources */,
 			);
