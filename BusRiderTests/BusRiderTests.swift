@@ -7,6 +7,9 @@
 //
 
 import XCTest
+import Moya
+import RxSwift
+import Moya_SwiftyJSONMapper
 @testable import BusRider
 
 class BusRiderTests: XCTestCase {
@@ -21,9 +24,20 @@ class BusRiderTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func test_stopsEndpointReturnsStopList() {
+        let provider = MoyaProvider<MTAService>(stubClosure: MoyaProvider.immediatelyStub)
+
+        let request = MTAService.stopsForLocation(lat: 40.6881291027667, lon: -73.96751666498955, latSpan: 0.005, lonSpan: 0.005)
+        //let expct = expectation(description: "finshed")
+        let disposeBag = DisposeBag()
+        provider.rx.request(request)
+            .map(to: StopList.self)
+            .subscribe(onSuccess: { (stopList) -> Void in
+                XCTAssert(stopList.stops.count > 0)
+            }, onError: { (error) -> Void in
+                print(error)
+                XCTFail()
+            }).disposed(by: disposeBag)
     }
     
     func testPerformanceExample() {
