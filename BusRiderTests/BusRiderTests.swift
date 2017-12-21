@@ -40,7 +40,21 @@ class BusRiderTests: XCTestCase {
             }).disposed(by: disposeBag)
     }
     
-    
+    func test_stopsForRoute_returnsStopGroups() {
+        let provider = MoyaProvider<MTAService>(stubClosure: MoyaProvider.immediatelyStub)
+        
+        let request = MTAService.stopsForRoute(routeId: "MTA NYCT_B69")
+        
+        let disposeBag = DisposeBag()
+        provider.rx.request(request)
+            .map(to: StopGroupings.self)
+            .subscribe(onSuccess: { (stopGroupings) in
+                XCTAssert(stopGroupings.groupings.count == 2)
+            }, onError: { (error) -> Void in
+                print(error)
+                XCTFail()
+            }).disposed(by: disposeBag)
+    }
     
     func testPerformanceExample() {
         // This is an example of a performance test case.

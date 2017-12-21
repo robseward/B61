@@ -31,8 +31,10 @@ class StopGroupings : ALSwiftyJSONAble {
         var groupings = [StopGroup]()
         let groups = jsonData["data"]["stopGroupings"]
         for (_,subJson):(String, JSON) in groups {
-            if let group = StopGroup(jsonData: subJson) {
-                groupings.append(group)
+            for (_,subJson):(String, JSON) in subJson["stopGroups"] {
+                if let group = StopGroup(jsonData: subJson) {
+                    groupings.append(group)
+                }
             }
         }
         
