@@ -13,6 +13,7 @@ import Alamofire
 
 enum MTAService {
     case stopsForLocation(lat: Float, lon: Float, latSpan: Float, lonSpan: Float)
+    case stopsForRoute(routeId: String)
 }
 
 extension MTAService: TargetType {
@@ -23,61 +24,22 @@ extension MTAService: TargetType {
     var path: String {
         switch self {
         case .stopsForLocation(_, _, _, _): return "stops-for-location.json"
+        case .stopsForRoute(let routeId): return "stops-for-route/\(routeId).json"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .stopsForLocation(_, _, _, _): return .get
+        case .stopsForLocation(_, _, _, _), .stopsForRoute(_): return .get
         }
     }
     
     var sampleData: Data {
         switch self {
         case .stopsForLocation(_,_,_,_):
-            return """
-            {
-                "code": 200,
-                "currentTime": 1513635655465,
-                "data": {
-                    "limitExceeded": false,
-                    "stops": [
-                        {
-                            "code": "303021",
-                            "direction": "E",
-                            "id": "MTA_303021",
-                            "lat": 40.687856,
-                            "locationType": 0,
-                            "lon": -73.968348,
-                            "name": "LAFAYETTE AV/VANDERBILT AV",
-                            "routes": [
-                                {
-                                    "agency": {
-                                        "disclaimer": "",
-                                        "id": "MTA NYCT",
-                                        "lang": "en",
-                                        "name": "MTA New York City Transit",
-                                        "phone": "718-330-1234",
-                                        "privateService": false,
-                                        "timezone": "America/New_York",
-                                        "url": "http://www.mta.info"
-                                    },
-                                    "color": "00AEEF",
-                                    "description": "via DeKalb & Lafayette Av",
-                                    "id": "MTA NYCT_B38",
-                                    "longName": "Ridgewood - Downtown Brooklyn",
-                                    "shortName": "B38",
-                                    "textColor": "FFFFFF",
-                                    "type": 3,
-                                    "url": "http://web.mta.info/nyct/bus/schedule/bkln/b038cur.pdf"
-                                }
-                            ],
-                            "wheelchairBoarding": "UNKNOWN"
-                        }
-                    ]
-                }
-            }
-            """.data(using: String.Encoding.utf8)!
+            return dataForFileName(name: "stops-for-location", ext: "json")
+        case .stopsForRoute(_):
+            return dataForFileName(name: "stops-for-route", ext: "json")
         }
     }
     
@@ -85,6 +47,7 @@ extension MTAService: TargetType {
         switch self {
         case .stopsForLocation(let lat, let lon, let latSpan, let lonSpan):
             return Task.requestParameters(parameters: ["lat" : lat, "lon" : lon, "latSpan" : latSpan, "lonSpan" : lonSpan, "key" : apiKey], encoding: URLEncoding.queryString)
+        case .stopsForRoute(_) : return Task.requestParameters(parameters: ["key" : apiKey], encoding: URLEncoding.queryString)
         }
     }
     
@@ -101,6 +64,16 @@ extension MTAService: TargetType {
         } else {
             assert(false, "Key not set in keys plist")
             return ""
+        }
+    }
+    
+    func dataForFileName(name: String, ext: String) -> Data {
+        let filePath = Bundle.main.path(forResource: name, ofType: ext)!
+        do {
+            return try Data(contentsOf: URL(fileURLWithPath: filePath))
+        } catch let e {
+            assert(false, e.localizedDescription)
+            return Data()
         }
     }
 }

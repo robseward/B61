@@ -1,0 +1,459 @@
+{
+    "code": 200,
+    "currentTime": 1513635655465,
+    "data": {
+        "limitExceeded": false,
+        "stops": [
+                  {
+                  "code": "303021",
+                  "direction": "E",
+                  "id": "MTA_303021",
+                  "lat": 40.687856,
+                  "locationType": 0,
+                  "lon": -73.968348,
+                  "name": "LAFAYETTE AV/VANDERBILT AV",
+                  "routes": [
+                             {
+                             "agency": {
+                             "disclaimer": "",
+                             "id": "MTA NYCT",
+                             "lang": "en",
+                             "name": "MTA New York City Transit",
+                             "phone": "718-330-1234",
+                             "privateService": false,
+                             "timezone": "America/New_York",
+                             "url": "http://www.mta.info"
+                             },
+                             "color": "00AEEF",
+                             "description": "via DeKalb & Lafayette Av",
+                             "id": "MTA NYCT_B38",
+                             "longName": "Ridgewood - Downtown Brooklyn",
+                             "shortName": "B38",
+                             "textColor": "FFFFFF",
+                             "type": 3,
+                             "url": "http://web.mta.info/nyct/bus/schedule/bkln/b038cur.pdf"
+                             }
+                             ],
+                  "wheelchairBoarding": "UNKNOWN"
+                  },
+                  {
+                  "code": "303022",
+                  "direction": "E",
+                  "id": "MTA_303022",
+                  "lat": 40.688199,
+                  "locationType": 0,
+                  "lon": -73.965384,
+                  "name": "LAFAYETTE AV/WASHINGTON AV",
+                  "routes": [
+                             {
+                             "agency": {
+                             "disclaimer": "",
+                             "id": "MTA NYCT",
+                             "lang": "en",
+                             "name": "MTA New York City Transit",
+                             "phone": "718-330-1234",
+                             "privateService": false,
+                             "timezone": "America/New_York",
+                             "url": "http://www.mta.info"
+                             },
+                             "color": "00AEEF",
+                             "description": "via DeKalb & Lafayette Av",
+                             "id": "MTA NYCT_B38",
+                             "longName": "Ridgewood - Downtown Brooklyn",
+                             "shortName": "B38",
+                             "textColor": "FFFFFF",
+                             "type": 3,
+                             "url": "http://web.mta.info/nyct/bus/schedule/bkln/b038cur.pdf"
+                             }
+                             ],
+                  "wheelchairBoarding": "UNKNOWN"
+                  },
+                  {
+                  "code": "303094",
+                  "direction": "W",
+                  "id": "MTA_303094",
+                  "lat": 40.689678,
+                  "locationType": 0,
+                  "lon": -73.966584,
+                  "name": "DE KALB AV/WASHINGTON AV",
+                  "routes": [
+                             {
+                             "agency": {
+                             "disclaimer": "",
+                             "id": "MTA NYCT",
+                             "lang": "en",
+                             "name": "MTA New York City Transit",
+                             "phone": "718-330-1234",
+                             "privateService": false,
+                             "timezone": "America/New_York",
+                             "url": "http://www.mta.info"
+                             },
+                             "color": "00AEEF",
+                             "description": "via DeKalb & Lafayette Av",
+                             "id": "MTA NYCT_B38",
+                             "longName": "Ridgewood - Downtown Brooklyn",
+                             "shortName": "B38",
+                             "textColor": "FFFFFF",
+                             "type": 3,
+                             "url": "http://web.mta.info/nyct/bus/schedule/bkln/b038cur.pdf"
+                             }
+                             ],
+                  "wheelchairBoarding": "UNKNOWN"
+                  },
+                  {
+                  "code": "303096",
+                  "direction": "W",
+                  "id": "MTA_303096",
+                  "lat": 40.689542,
+                  "locationType": 0,
+                  "lon": -73.96952,
+                  "name": "DE KALB AV/VANDERBILT AV",
+                  "routes": [
+                             {
+                             "agency": {
+                             "disclaimer": "",
+                             "id": "MTA NYCT",
+                             "lang": "en",
+                             "name": "MTA New York City Transit",
+                             "phone": "718-330-1234",
+                             "privateService": false,
+                             "timezone": "America/New_York",
+                             "url": "http://www.mta.info"
+                             },
+                             "color": "00AEEF",
+                             "description": "via DeKalb & Lafayette Av",
+                             "id": "MTA NYCT_B38",
+                             "longName": "Ridgewood - Downtown Brooklyn",
+                             "shortName": "B38",
+                             "textColor": "FFFFFF",
+                             "type": 3,
+                             "url": "http://web.mta.info/nyct/bus/schedule/bkln/b038cur.pdf"
+                             }
+                             ],
+                  "wheelchairBoarding": "UNKNOWN"
+                  },
+                  {
+                  "code": "305808",
+                  "direction": "N",
+                  "id": "MTA_305808",
+                  "lat": 40.686314,
+                  "locationType": 0,
+                  "lon": -73.968396,
+                  "name": "VANDERBILT AV/GREENE AV",
+                  "routes": [
+                             {
+                             "agency": {
+                             "disclaimer": "",
+                             "id": "MTA NYCT",
+                             "lang": "en",
+                             "name": "MTA New York City Transit",
+                             "phone": "718-330-1234",
+                             "privateService": false,
+                             "timezone": "America/New_York",
+                             "url": "http://www.mta.info"
+                             },
+                             "color": "006CB7",
+                             "description": "via Vanderbilt Av / 7th Av / McDonald Av",
+                             "id": "MTA NYCT_B69",
+                             "longName": "Downtown Brooklyn - Kensington",
+                             "shortName": "B69",
+                             "textColor": "FFFFFF",
+                             "type": 3,
+                             "url": "http://web.mta.info/nyct/bus/schedule/bkln/b068cur.pdf"
+                             }
+                             ],
+                  "wheelchairBoarding": "UNKNOWN"
+                  },
+                  {
+                  "code": "305809",
+                  "direction": "N",
+                  "id": "MTA_305809",
+                  "lat": 40.687777,
+                  "locationType": 0,
+                  "lon": -73.968687,
+                  "name": "VANDERBILT AV/LAFAYETTE AV",
+                  "routes": [
+                             {
+                             "agency": {
+                             "disclaimer": "",
+                             "id": "MTA NYCT",
+                             "lang": "en",
+                             "name": "MTA New York City Transit",
+                             "phone": "718-330-1234",
+                             "privateService": false,
+                             "timezone": "America/New_York",
+                             "url": "http://www.mta.info"
+                             },
+                             "color": "006CB7",
+                             "description": "via Vanderbilt Av / 7th Av / McDonald Av",
+                             "id": "MTA NYCT_B69",
+                             "longName": "Downtown Brooklyn - Kensington",
+                             "shortName": "B69",
+                             "textColor": "FFFFFF",
+                             "type": 3,
+                             "url": "http://web.mta.info/nyct/bus/schedule/bkln/b068cur.pdf"
+                             }
+                             ],
+                  "wheelchairBoarding": "UNKNOWN"
+                  },
+                  {
+                  "code": "305810",
+                  "direction": "N",
+                  "id": "MTA_305810",
+                  "lat": 40.68935,
+                  "locationType": 0,
+                  "lon": -73.969,
+                  "name": "VANDERBILT AV/DE KALB AV",
+                  "routes": [
+                             {
+                             "agency": {
+                             "disclaimer": "",
+                             "id": "MTA NYCT",
+                             "lang": "en",
+                             "name": "MTA New York City Transit",
+                             "phone": "718-330-1234",
+                             "privateService": false,
+                             "timezone": "America/New_York",
+                             "url": "http://www.mta.info"
+                             },
+                             "color": "006CB7",
+                             "description": "via Vanderbilt Av / 7th Av / McDonald Av",
+                             "id": "MTA NYCT_B69",
+                             "longName": "Downtown Brooklyn - Kensington",
+                             "shortName": "B69",
+                             "textColor": "FFFFFF",
+                             "type": 3,
+                             "url": "http://web.mta.info/nyct/bus/schedule/bkln/b068cur.pdf"
+                             }
+                             ],
+                  "wheelchairBoarding": "UNKNOWN"
+                  },
+                  {
+                  "code": "305834",
+                  "direction": "S",
+                  "id": "MTA_305834",
+                  "lat": 40.689567,
+                  "locationType": 0,
+                  "lon": -73.969209,
+                  "name": "VANDERBILT AV/DE KALB AV",
+                  "routes": [
+                             {
+                             "agency": {
+                             "disclaimer": "",
+                             "id": "MTA NYCT",
+                             "lang": "en",
+                             "name": "MTA New York City Transit",
+                             "phone": "718-330-1234",
+                             "privateService": false,
+                             "timezone": "America/New_York",
+                             "url": "http://www.mta.info"
+                             },
+                             "color": "006CB7",
+                             "description": "via Vanderbilt Av / 7th Av / McDonald Av",
+                             "id": "MTA NYCT_B69",
+                             "longName": "Downtown Brooklyn - Kensington",
+                             "shortName": "B69",
+                             "textColor": "FFFFFF",
+                             "type": 3,
+                             "url": "http://web.mta.info/nyct/bus/schedule/bkln/b068cur.pdf"
+                             }
+                             ],
+                  "wheelchairBoarding": "UNKNOWN"
+                  },
+                  {
+                  "code": "305835",
+                  "direction": "S",
+                  "id": "MTA_305835",
+                  "lat": 40.687502,
+                  "locationType": 0,
+                  "lon": -73.968799,
+                  "name": "VANDERBILT AV/LAFAYETTE AV",
+                  "routes": [
+                             {
+                             "agency": {
+                             "disclaimer": "",
+                             "id": "MTA NYCT",
+                             "lang": "en",
+                             "name": "MTA New York City Transit",
+                             "phone": "718-330-1234",
+                             "privateService": false,
+                             "timezone": "America/New_York",
+                             "url": "http://www.mta.info"
+                             },
+                             "color": "006CB7",
+                             "description": "via Vanderbilt Av / 7th Av / McDonald Av",
+                             "id": "MTA NYCT_B69",
+                             "longName": "Downtown Brooklyn - Kensington",
+                             "shortName": "B69",
+                             "textColor": "FFFFFF",
+                             "type": 3,
+                             "url": "http://web.mta.info/nyct/bus/schedule/bkln/b068cur.pdf"
+                             }
+                             ],
+                  "wheelchairBoarding": "UNKNOWN"
+                  },
+                  {
+                  "code": "305836",
+                  "direction": "S",
+                  "id": "MTA_305836",
+                  "lat": 40.686479,
+                  "locationType": 0,
+                  "lon": -73.968587,
+                  "name": "VANDERBILT AV/GREENE AV",
+                  "routes": [
+                             {
+                             "agency": {
+                             "disclaimer": "",
+                             "id": "MTA NYCT",
+                             "lang": "en",
+                             "name": "MTA New York City Transit",
+                             "phone": "718-330-1234",
+                             "privateService": false,
+                             "timezone": "America/New_York",
+                             "url": "http://www.mta.info"
+                             },
+                             "color": "006CB7",
+                             "description": "via Vanderbilt Av / 7th Av / McDonald Av",
+                             "id": "MTA NYCT_B69",
+                             "longName": "Downtown Brooklyn - Kensington",
+                             "shortName": "B69",
+                             "textColor": "FFFFFF",
+                             "type": 3,
+                             "url": "http://web.mta.info/nyct/bus/schedule/bkln/b068cur.pdf"
+                             }
+                             ],
+                  "wheelchairBoarding": "UNKNOWN"
+                  },
+                  {
+                  "code": "307549",
+                  "direction": "E",
+                  "id": "MTA_307549",
+                  "lat": 40.686401,
+                  "locationType": 0,
+                  "lon": -73.968035,
+                  "name": "GREENE AV/VANDERBILT AV",
+                  "routes": [
+                             {
+                             "agency": {
+                             "disclaimer": "",
+                             "id": "MTA NYCT",
+                             "lang": "en",
+                             "name": "MTA New York City Transit",
+                             "phone": "718-330-1234",
+                             "privateService": false,
+                             "timezone": "America/New_York",
+                             "url": "http://www.mta.info"
+                             },
+                             "color": "EE352E",
+                             "description": "via Gates Av",
+                             "id": "MTA NYCT_B52",
+                             "longName": "Downtown Brooklyn - Ridgewood",
+                             "shortName": "B52",
+                             "textColor": "FFFFFF",
+                             "type": 3,
+                             "url": "http://web.mta.info/nyct/bus/schedule/bkln/b052cur.pdf"
+                             }
+                             ],
+                  "wheelchairBoarding": "UNKNOWN"
+                  },
+                  {
+                  "code": "307550",
+                  "direction": "E",
+                  "id": "MTA_307550",
+                  "lat": 40.686738,
+                  "locationType": 0,
+                  "lon": -73.965107,
+                  "name": "GREENE AV/WASHINGTON AV",
+                  "routes": [
+                             {
+                             "agency": {
+                             "disclaimer": "",
+                             "id": "MTA NYCT",
+                             "lang": "en",
+                             "name": "MTA New York City Transit",
+                             "phone": "718-330-1234",
+                             "privateService": false,
+                             "timezone": "America/New_York",
+                             "url": "http://www.mta.info"
+                             },
+                             "color": "EE352E",
+                             "description": "via Gates Av",
+                             "id": "MTA NYCT_B52",
+                             "longName": "Downtown Brooklyn - Ridgewood",
+                             "shortName": "B52",
+                             "textColor": "FFFFFF",
+                             "type": 3,
+                             "url": "http://web.mta.info/nyct/bus/schedule/bkln/b052cur.pdf"
+                             }
+                             ],
+                  "wheelchairBoarding": "UNKNOWN"
+                  },
+                  {
+                  "code": "307575",
+                  "direction": "W",
+                  "id": "MTA_307575",
+                  "lat": 40.686402,
+                  "locationType": 0,
+                  "lon": -73.96894,
+                  "name": "GREENE AV/VANDERBILT AV",
+                  "routes": [
+                             {
+                             "agency": {
+                             "disclaimer": "",
+                             "id": "MTA NYCT",
+                             "lang": "en",
+                             "name": "MTA New York City Transit",
+                             "phone": "718-330-1234",
+                             "privateService": false,
+                             "timezone": "America/New_York",
+                             "url": "http://www.mta.info"
+                             },
+                             "color": "EE352E",
+                             "description": "via Gates Av",
+                             "id": "MTA NYCT_B52",
+                             "longName": "Downtown Brooklyn - Ridgewood",
+                             "shortName": "B52",
+                             "textColor": "FFFFFF",
+                             "type": 3,
+                             "url": "http://web.mta.info/nyct/bus/schedule/bkln/b052cur.pdf"
+                             }
+                             ],
+                  "wheelchairBoarding": "UNKNOWN"
+                  },
+                  {
+                  "code": "307596",
+                  "direction": "W",
+                  "id": "MTA_307596",
+                  "lat": 40.686741,
+                  "locationType": 0,
+                  "lon": -73.96598,
+                  "name": "GREENE AV/WASHINGTON AV",
+                  "routes": [
+                             {
+                             "agency": {
+                             "disclaimer": "",
+                             "id": "MTA NYCT",
+                             "lang": "en",
+                             "name": "MTA New York City Transit",
+                             "phone": "718-330-1234",
+                             "privateService": false,
+                             "timezone": "America/New_York",
+                             "url": "http://www.mta.info"
+                             },
+                             "color": "EE352E",
+                             "description": "via Gates Av",
+                             "id": "MTA NYCT_B52",
+                             "longName": "Downtown Brooklyn - Ridgewood",
+                             "shortName": "B52",
+                             "textColor": "FFFFFF",
+                             "type": 3,
+                             "url": "http://web.mta.info/nyct/bus/schedule/bkln/b052cur.pdf"
+                             }
+                             ],
+                  "wheelchairBoarding": "UNKNOWN"
+                  }
+                  ]
+    },
+    "text": "OK",
+    "version": 1
+}
