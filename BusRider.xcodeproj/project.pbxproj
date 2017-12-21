@@ -20,6 +20,7 @@
 		D4612D9A1FE86A8F00EF30C2 /* MTAService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4612D991FE86A8F00EF30C2 /* MTAService.swift */; };
 		D4612D9C1FE8794B00EF30C2 /* keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = D4612D9B1FE8794B00EF30C2 /* keys.plist */; };
 		D4612D9E1FE8B33200EF30C2 /* StopModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4612D9D1FE8B33200EF30C2 /* StopModel.swift */; };
+		D4612DA11FEB5F1900EF30C2 /* stops-for-route.json in Resources */ = {isa = PBXBuildFile; fileRef = D4612DA01FEB5F1900EF30C2 /* stops-for-route.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		D4612D991FE86A8F00EF30C2 /* MTAService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTAService.swift; sourceTree = "<group>"; };
 		D4612D9B1FE8794B00EF30C2 /* keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = keys.plist; sourceTree = "<group>"; };
 		D4612D9D1FE8B33200EF30C2 /* StopModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopModel.swift; sourceTree = "<group>"; };
+		D4612DA01FEB5F1900EF30C2 /* stops-for-route.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "stops-for-route.json"; path = "BusRider/stub-responses/stops-for-route.json"; sourceTree = SOURCE_ROOT; };
 		DA3F103A1A90A856D32C89DB /* Pods_BusRiderUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BusRiderUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F92E467E494AA3856BFED2E4 /* Pods_BusRiderTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BusRiderTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -139,6 +141,7 @@
 				D4248E8A1FE440EA00E1B342 /* Info.plist */,
 				D4612D991FE86A8F00EF30C2 /* MTAService.swift */,
 				D4612D9B1FE8794B00EF30C2 /* keys.plist */,
+				D4612D9F1FEB5EC800EF30C2 /* stub responses */,
 			);
 			path = BusRider;
 			sourceTree = "<group>";
@@ -159,6 +162,15 @@
 				D4248EA01FE440EA00E1B342 /* Info.plist */,
 			);
 			path = BusRiderUITests;
+			sourceTree = "<group>";
+		};
+		D4612D9F1FEB5EC800EF30C2 /* stub responses */ = {
+			isa = PBXGroup;
+			children = (
+				D4612DA01FEB5F1900EF30C2 /* stops-for-route.json */,
+			);
+			name = "stub responses";
+			path = "stub-responses";
 			sourceTree = "<group>";
 		};
 		EEA10EF785BC7D0DC275CEE6 /* Pods */ = {
@@ -292,6 +304,7 @@
 			files = (
 				D4612D9C1FE8794B00EF30C2 /* keys.plist in Resources */,
 				D4248E891FE440EA00E1B342 /* LaunchScreen.storyboard in Resources */,
+				D4612DA11FEB5F1900EF30C2 /* stops-for-route.json in Resources */,
 				D4248E861FE440EA00E1B342 /* Assets.xcassets in Resources */,
 				D4248E841FE440EA00E1B342 /* Main.storyboard in Resources */,
 			);

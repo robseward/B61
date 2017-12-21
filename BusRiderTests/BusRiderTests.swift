@@ -28,7 +28,7 @@ class BusRiderTests: XCTestCase {
         let provider = MoyaProvider<MTAService>(stubClosure: MoyaProvider.immediatelyStub)
 
         let request = MTAService.stopsForLocation(lat: 40.6881291027667, lon: -73.96751666498955, latSpan: 0.005, lonSpan: 0.005)
-        //let expct = expectation(description: "finshed")
+
         let disposeBag = DisposeBag()
         provider.rx.request(request)
             .map(to: StopList.self)
