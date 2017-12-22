@@ -22,6 +22,7 @@
 		D4612D9E1FE8B33200EF30C2 /* StopModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4612D9D1FE8B33200EF30C2 /* StopModel.swift */; };
 		D4612DA11FEB5F1900EF30C2 /* stops-for-route.json in Resources */ = {isa = PBXBuildFile; fileRef = D4612DA01FEB5F1900EF30C2 /* stops-for-route.json */; };
 		D4612DA31FEC0E2A00EF30C2 /* stops-for-location.json in Resources */ = {isa = PBXBuildFile; fileRef = D4612DA21FEC0E2A00EF30C2 /* stops-for-location.json */; };
+		D4612DA71FEC26E800EF30C2 /* BusInfoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4612DA61FEC26E800EF30C2 /* BusInfoProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		D4612D9D1FE8B33200EF30C2 /* StopModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopModel.swift; sourceTree = "<group>"; };
 		D4612DA01FEB5F1900EF30C2 /* stops-for-route.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "stops-for-route.json"; path = "BusRider/stub-responses/stops-for-route.json"; sourceTree = SOURCE_ROOT; };
 		D4612DA21FEC0E2A00EF30C2 /* stops-for-location.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "stops-for-location.json"; sourceTree = "<group>"; };
+		D4612DA61FEC26E800EF30C2 /* BusInfoProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusInfoProvider.swift; sourceTree = "<group>"; };
 		DA3F103A1A90A856D32C89DB /* Pods_BusRiderUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BusRiderUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F92E467E494AA3856BFED2E4 /* Pods_BusRiderTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BusRiderTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -137,6 +139,7 @@
 				D4248E7E1FE440EA00E1B342 /* AppDelegate.swift */,
 				D4248E801FE440EA00E1B342 /* ViewController.swift */,
 				D4612D9D1FE8B33200EF30C2 /* StopModel.swift */,
+				D4612DA61FEC26E800EF30C2 /* BusInfoProvider.swift */,
 				D4248E821FE440EA00E1B342 /* Main.storyboard */,
 				D4248E851FE440EA00E1B342 /* Assets.xcassets */,
 				D4248E871FE440EA00E1B342 /* LaunchScreen.storyboard */,
@@ -498,6 +501,7 @@
 				D4612D9A1FE86A8F00EF30C2 /* MTAService.swift in Sources */,
 				D4612D9E1FE8B33200EF30C2 /* StopModel.swift in Sources */,
 				D4248E811FE440EA00E1B342 /* ViewController.swift in Sources */,
+				D4612DA71FEC26E800EF30C2 /* BusInfoProvider.swift in Sources */,
 				D4248E7F1FE440EA00E1B342 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

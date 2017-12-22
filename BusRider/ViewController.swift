@@ -8,27 +8,40 @@
 
 import UIKit
 import Moya
+import RxSwift
 
 class ViewController: UIViewController {
     
-    let provider = MoyaProvider<MTAService>()
-    
+    let bag = DisposeBag()
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        
-        let request = MTAService.stopsForLocation(lat: 40.6881291027667, lon: -73.96751666498955, latSpan: 0.005, lonSpan: 0.005)
-        
 
-        provider.request(request, completion: { result in
-            switch result {
-                case .success(let response):
-                print(response.data)
-            default:
-                break
-            }
-        })
+        let lat: Float = 40.6881291027667
+        let lon: Float = -73.96751666498955
+        
+//        let provider = MoyaProvider<MTAService>()
+//
+//        let request = MTAService.stopsForLocation(lat: lat, lon: lon, latSpan: 0.005, lonSpan: 0.005)
+//        provider.rx.request(request)
+//            .map(to: StopList.self)
+//            .map { stopList -> [String] in
+//                var h = Set<String>()
+//                stopList.stops.forEach { h.update(with: $0.routes[0].shortName) }
+//                return Array(h)
+//            }
+//            .subscribe(onSuccess: { (strings) in
+//                print(strings)
+//            }) { (error) in
+//                print(error.localizedDescription)
+//            }.disposed(by: bag)
+        
+        let provider = BusInfoProvider()
+        provider.nearbyBusLines(lat: lat, lon: lon)
+            .subscribe(onSuccess: { (strings) in
+                print(strings)
+            }, onError: {error in
+                print(error.localizedDescription)
+            }).disposed(by: bag)
     }
 
     override func didReceiveMemoryWarning() {
