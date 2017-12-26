@@ -13,15 +13,29 @@ import Moya_SwiftyJSONMapper
 @testable import BusRider
 
 class BusRiderTests: XCTestCase {
-    
+    var disposeBag = DisposeBag()
+
     override func setUp() {
         super.setUp()
+        disposeBag = DisposeBag()
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
+    }
+    
+    func test_busInfoStopGroups() {
+        let busInfo = BusInfoProvider()
+        busInfo.provider = MoyaProvider<MTAService>(stubClosure: MoyaProvider.immediatelyStub)
+        
+        busInfo.directionsForRoute(routeId: "Foo")
+            .subscribe(onSuccess: { (stopGroups) in
+                XCTAssert(stopGroups.count == 2)
+            }, onError: { (error) in
+                XCTFail()
+            }).disposed(by: disposeBag)
     }
     
     func test_stopsEndpointReturnsStopList() {

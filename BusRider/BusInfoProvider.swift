@@ -11,7 +11,7 @@ import RxSwift
 import Moya
 
 class BusInfoProvider {
-    let provider = MoyaProvider<MTAService>()
+    var provider = MoyaProvider<MTAService>()
     
     func nearbyBusLines(lat: Float, lon: Float) -> PrimitiveSequence<SingleTrait, [RouteModel]> {
         let request = MTAService.stopsForLocation(lat: lat, lon: lon, latSpan: 0.005, lonSpan: 0.005)
@@ -28,5 +28,15 @@ class BusInfoProvider {
         return observable
     }
     
+    func directionsForRoute(routeId: String) -> PrimitiveSequence<SingleTrait, [StopGroup]>{
+        let request = MTAService.stopsForRoute(routeId: routeId)
+        let observable = provider.rx.request(request)
+            .map(to: StopGroupings.self)
+            .map { groupingList -> [StopGroup] in
+                return groupingList.groupings
+            }
+        
+        return observable
+    }
     
 }
