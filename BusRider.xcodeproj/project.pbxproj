@@ -12,6 +12,8 @@
 		7BC150FD419E063F77196E41 /* Pods_BusRiderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA3F103A1A90A856D32C89DB /* Pods_BusRiderUITests.framework */; };
 		D40E63BB1FF2C63D00BBF3E6 /* DirectionSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40E63BA1FF2C63D00BBF3E6 /* DirectionSelectionViewController.swift */; };
 		D40E63BD1FF2C69D00BBF3E6 /* DirectionSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40E63BC1FF2C69D00BBF3E6 /* DirectionSelectionViewModel.swift */; };
+		D40E63BF1FF2D31100BBF3E6 /* StopSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40E63BE1FF2D31100BBF3E6 /* StopSelectionViewController.swift */; };
+		D40E63C11FF2D31D00BBF3E6 /* StopSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40E63C01FF2D31D00BBF3E6 /* StopSelectionViewModel.swift */; };
 		D4248E7F1FE440EA00E1B342 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4248E7E1FE440EA00E1B342 /* AppDelegate.swift */; };
 		D4248E811FE440EA00E1B342 /* BusLinesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4248E801FE440EA00E1B342 /* BusLinesViewController.swift */; };
 		D4248E841FE440EA00E1B342 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4248E821FE440EA00E1B342 /* Main.storyboard */; };
@@ -54,6 +56,8 @@
 		C0A845FE45ABCBB4C997B51C /* Pods-BusRiderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusRiderTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BusRiderTests/Pods-BusRiderTests.release.xcconfig"; sourceTree = "<group>"; };
 		D40E63BA1FF2C63D00BBF3E6 /* DirectionSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionSelectionViewController.swift; sourceTree = "<group>"; };
 		D40E63BC1FF2C69D00BBF3E6 /* DirectionSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionSelectionViewModel.swift; sourceTree = "<group>"; };
+		D40E63BE1FF2D31100BBF3E6 /* StopSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopSelectionViewController.swift; sourceTree = "<group>"; };
+		D40E63C01FF2D31D00BBF3E6 /* StopSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopSelectionViewModel.swift; sourceTree = "<group>"; };
 		D4248E7B1FE440EA00E1B342 /* BusRider.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BusRider.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4248E7E1FE440EA00E1B342 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4248E801FE440EA00E1B342 /* BusLinesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusLinesViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +124,8 @@
 			children = (
 				D40E63BA1FF2C63D00BBF3E6 /* DirectionSelectionViewController.swift */,
 				D40E63BC1FF2C69D00BBF3E6 /* DirectionSelectionViewModel.swift */,
+				D40E63BE1FF2D31100BBF3E6 /* StopSelectionViewController.swift */,
+				D40E63C01FF2D31D00BBF3E6 /* StopSelectionViewModel.swift */,
 			);
 			path = RouteExploration;
 			sourceTree = "<group>";
@@ -519,8 +525,10 @@
 				D4612D9E1FE8B33200EF30C2 /* StopModel.swift in Sources */,
 				D4248E811FE440EA00E1B342 /* BusLinesViewController.swift in Sources */,
 				D4612DA71FEC26E800EF30C2 /* BusInfoProvider.swift in Sources */,
+				D40E63BF1FF2D31100BBF3E6 /* StopSelectionViewController.swift in Sources */,
 				D40E63BD1FF2C69D00BBF3E6 /* DirectionSelectionViewModel.swift in Sources */,
 				D4248E7F1FE440EA00E1B342 /* AppDelegate.swift in Sources */,
+				D40E63C11FF2D31D00BBF3E6 /* StopSelectionViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
