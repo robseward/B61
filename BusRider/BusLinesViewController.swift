@@ -39,14 +39,26 @@ class BusLinesViewController: UIViewController, UITableViewDelegate {
             }).disposed(by: disposeBag)
 
         tableView.rx
-            .modelSelected(String.self)
-            .subscribe(onNext: { indexPath in
-                self.show(UIViewController(), sender: self)
-            })
-            .disposed(by: disposeBag)
+            .modelSelected(RouteModel.self)
+            .subscribe(onNext: { (route) in
+                self.showDirectionSelection(routeId: route.routeId)
+            }).disposed(by: disposeBag)
+//            .subscribe(onNext: { route in
+//                //let route = items.value[indexPath]
+//                self.showDirectionSelection(routeId: route.routeId)
+//            })
+//            .disposed(by: disposeBag)
 
     }
 
+    func showDirectionSelection(routeId: String) {
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        if let vc = storyBoard.instantiateViewController(withIdentifier: "DirectionSelection") as? DirectionSelectionViewController {
+            vc.routeId = routeId
+            show(vc, sender: self)
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

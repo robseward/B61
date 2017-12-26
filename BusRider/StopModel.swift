@@ -96,7 +96,7 @@ class StopModel : ALSwiftyJSONAble {
 class RouteModel : ALSwiftyJSONAble {
     let longName: String
     let shortName: String
-    let id: String
+    let routeId: String
     
     static func routeCollection(jsonData: JSON) -> [RouteModel] {
         var routes = [RouteModel]()
@@ -116,7 +116,7 @@ class RouteModel : ALSwiftyJSONAble {
         {
             self.longName = longName
             self.shortName = shortName
-            self.id = id
+            self.routeId = id
         } else {
             return nil
         }
