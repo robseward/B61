@@ -9,16 +9,26 @@
 import UIKit
 import Moya
 import RxSwift
+import RxCocoa
 
-class ViewController: UIViewController {
+class BusLinesViewController: UIViewController, UITableViewDelegate {
     
-    let bag = DisposeBag()
+    @IBOutlet weak var tableView: UITableView!
+    
+    var items = Variable<[String]>([])
+    
+    var disposeBag = DisposeBag()
     override func viewDidLoad() {
         super.viewDidLoad()
 
         let lat: Float = 40.6881291027667
         let lon: Float = -73.96751666498955
         
+        items.asObservable().bind(to: tableView.rx.items(cellIdentifier: "Cell", cellType: UITableViewCell.self)) { (row, element, cell) in
+            cell.textLabel?.text = "\(element) @ row \(row)"
+            }
+            .disposed(by: disposeBag)
+
 //        let provider = MoyaProvider<MTAService>()
 //
 //        let request = MTAService.stopsForLocation(lat: lat, lon: lon, latSpan: 0.005, lonSpan: 0.005)
@@ -35,13 +45,15 @@ class ViewController: UIViewController {
 //                print(error.localizedDescription)
 //            }.disposed(by: bag)
         
-        let provider = BusInfoProvider()
-        provider.nearbyBusLines(lat: lat, lon: lon)
-            .subscribe(onSuccess: { (strings) in
-                print(strings)
-            }, onError: {error in
-                print(error.localizedDescription)
-            }).disposed(by: bag)
+//        let provider = BusInfoProvider()
+//        provider.nearbyBusLines(lat: lat, lon: lon)
+//            .subscribe(onSuccess: { (strings) in
+//                print(strings)
+//            }, onError: {error in
+//                print(error.localizedDescription)
+//            }).disposed(by: disposeBag)
+
+        
     }
 
     override func didReceiveMemoryWarning() {
