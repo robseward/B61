@@ -33,7 +33,21 @@ class DirectionSelectionViewController: UIViewController, UITableViewDelegate {
         
         viewModel.loadStopGroupsForRoute(routeId: routeId)
         
+        tableView.rx.modelSelected(StopGroup.self)
+            .subscribe( onNext: { stopGroup in
+                self.showStops(stopGroup: stopGroup)
+            })
+            .disposed(by: disposeBag)
+        
         
     }
     
+    func showStops(stopGroup: StopGroup) {
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        if let vc = storyBoard.instantiateViewController(withIdentifier: "StopSelection") as? StopSelectionViewController {
+            show(vc, sender: self)
+            vc.setStopGroup(stopGroup: stopGroup)
+        }
+
+    }
 }

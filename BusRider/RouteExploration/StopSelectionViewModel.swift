@@ -12,6 +12,9 @@ import RxCocoa
 
 class StopSelectionViewModel {
     var items = Variable<[StopModel]>([])
-    
+    var lat: Float?
+    var lon: Float?
+    var routeName: String?
+    var closestStop: Int?
     
 }
