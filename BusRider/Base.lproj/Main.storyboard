@@ -110,7 +110,7 @@
         <!--Stop Selection View Controller-->
         <scene sceneID="L6G-Uh-Ah0">
             <objects>
-                <viewController storyboardIdentifier="DirectionSelection" id="69r-RJ-eYP" customClass="StopSelectionViewController" customModule="BusRider" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StopSelection" id="69r-RJ-eYP" customClass="StopSelectionViewController" customModule="BusRider" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="htf-4y-4fW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

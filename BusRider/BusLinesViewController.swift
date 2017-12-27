@@ -24,7 +24,8 @@ class BusLinesViewController: UIViewController, UITableViewDelegate {
         let lat: Float = 40.6881291027667
         let lon: Float = -73.96751666498955
         
-        items.asObservable().bind(to: tableView.rx.items(cellIdentifier: "Cell", cellType: UITableViewCell.self)) { (_, element, cell) in
+        items.asObservable()
+            .bind(to: tableView.rx.items(cellIdentifier: "Cell", cellType: UITableViewCell.self)) { (_, element, cell) in
             cell.textLabel?.text = "\(element.shortName)"
             }
             .disposed(by: disposeBag)
@@ -48,6 +49,11 @@ class BusLinesViewController: UIViewController, UITableViewDelegate {
 //                self.showDirectionSelection(routeId: route.routeId)
 //            })
 //            .disposed(by: disposeBag)
+        LocationManager.shared.currentLocation.asObservable()
+            .subscribe(onNext: { location in
+                guard let location = location else { return }
+                print(location.description)
+            }).disposed(by: disposeBag)
 
     }
 
