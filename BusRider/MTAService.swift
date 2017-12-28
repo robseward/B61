@@ -9,10 +9,11 @@
 import Foundation
 import Moya
 import Alamofire
+import CoreLocation
 
 
 enum MTAService {
-    case stopsForLocation(lat: Float, lon: Float, latSpan: Float, lonSpan: Float)
+    case stopsForLocation(lat: CLLocationDegrees, lon: CLLocationDegrees, latSpan: Float, lonSpan: Float)
     case stopsForRoute(routeId: String)
 }
 

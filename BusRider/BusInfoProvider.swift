@@ -9,11 +9,12 @@
 import Foundation
 import RxSwift
 import Moya
+import CoreLocation
 
 class BusInfoProvider {
-    var provider = MoyaProvider<MTAService>()
+    var provider = MoyaProvider<MTAService>(stubClosure: MoyaProvider.immediatelyStub)//MoyaProvider<MTAService>()
     
-    func nearbyBusLines(lat: Float, lon: Float) -> PrimitiveSequence<SingleTrait, [RouteModel]> {
+    func nearbyBusLines(lat: CLLocationDegrees, lon: CLLocationDegrees) -> PrimitiveSequence<SingleTrait, [RouteModel]> {
         let request = MTAService.stopsForLocation(lat: lat, lon: lon, latSpan: 0.005, lonSpan: 0.005)
         let observable = provider.rx.request(request)
             .map(to: StopList.self)

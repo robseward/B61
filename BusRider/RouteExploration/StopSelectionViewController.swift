@@ -19,10 +19,23 @@ class StopSelectionViewController: UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel.items.asObservable().bind(to: tableView.rx.items(cellIdentifier: "Cell", cellType: UITableViewCell.self)) { (row, element, cell) in
-            cell.textLabel?.text = "\(element.name)"
+        viewModel.items.asObservable().bind(to: tableView.rx.items(cellIdentifier: "Cell", cellType: UITableViewCell.self))
+            { (row, element, cell) in
+                cell.textLabel?.text = "\(element.name)"
+                if row == self.viewModel.closestStopIndex {
+                    cell.contentView.backgroundColor = UIColor.gray
+                } else {
+                    cell.contentView.backgroundColor = UIColor.white
+                }
             }
             .disposed(by: disposeBag)
+        
+        viewModel.items.asObservable().subscribe(onNext: { stops in
+            if let index = self.viewModel.closestStopIndex {
+                let indexPath = IndexPath(row: index, section: 0)
+                self.tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.top, animated: true)
+            }
+        }).disposed(by: disposeBag)
     }
     
     func setStopGroup(stopGroup: StopGroup) {

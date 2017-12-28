@@ -9,6 +9,7 @@
 import Foundation
 import Moya_SwiftyJSONMapper
 import SwiftyJSON
+import CoreLocation
 
 class StopList : ALSwiftyJSONAble {
     let stops: [StopModel]
@@ -76,17 +77,21 @@ class StopModel : ALSwiftyJSONAble {
     let name: String
     let stopId: String
     let routes: [RouteModel]
+    let location: CLLocation
     
     required init?(jsonData: JSON) {
         if
             let code = jsonData["code"].string,
             let name = jsonData["name"].string,
-            let stopId = jsonData["id"].string
+            let stopId = jsonData["id"].string,
+            let lat = jsonData["lat"].double,
+            let lon = jsonData["lon"].double
         {
             self.code = code
             self.name = name
             self.stopId = stopId
             self.routes = RouteModel.routeCollection(jsonData: jsonData["routes"])
+            self.location = CLLocation(latitude: lat, longitude: lon)
         } else {
             return nil
         }
