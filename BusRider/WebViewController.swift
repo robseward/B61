@@ -20,6 +20,10 @@ class WebViewController: UIViewController {
         
     }
     
+    @IBAction func donePressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     func showStopPage(stopCode: String) {
         let baseUrl = "https://bustime.mta.info/m/index?q="
         let urlString = ("\(baseUrl)\(stopCode)")
