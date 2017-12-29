@@ -12,16 +12,17 @@ import MapKit
 class MainMapViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
+    var viewModel = MainMapViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
-        _configureMap()
         _addTrackingButton()
+        _configureMap()
     }
 
     private func _configureMap() {
-        mapView.showsUserLocation = true
+        mapView.showsUserLocation = false
         mapView.userTrackingMode = .follow
     }
     

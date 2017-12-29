@@ -19,6 +19,7 @@
 		D40E63C91FF6038D00BBF3E6 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40E63C81FF6038D00BBF3E6 /* WebViewController.swift */; };
 		D40E63CB1FF6C92300BBF3E6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D40E63CA1FF6C92300BBF3E6 /* MapKit.framework */; };
 		D40E63CD1FF6CCBF00BBF3E6 /* MainMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40E63CC1FF6CCBF00BBF3E6 /* MainMapViewController.swift */; };
+		D40E63D01FF6D24400BBF3E6 /* MainMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40E63CF1FF6D24400BBF3E6 /* MainMapViewModel.swift */; };
 		D4248E7F1FE440EA00E1B342 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4248E7E1FE440EA00E1B342 /* AppDelegate.swift */; };
 		D4248E811FE440EA00E1B342 /* BusLinesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4248E801FE440EA00E1B342 /* BusLinesViewController.swift */; };
 		D4248E841FE440EA00E1B342 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4248E821FE440EA00E1B342 /* Main.storyboard */; };
@@ -68,6 +69,7 @@
 		D40E63C81FF6038D00BBF3E6 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		D40E63CA1FF6C92300BBF3E6 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		D40E63CC1FF6CCBF00BBF3E6 /* MainMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapViewController.swift; sourceTree = "<group>"; };
+		D40E63CF1FF6D24400BBF3E6 /* MainMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapViewModel.swift; sourceTree = "<group>"; };
 		D4248E7B1FE440EA00E1B342 /* BusRider.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BusRider.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4248E7E1FE440EA00E1B342 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4248E801FE440EA00E1B342 /* BusLinesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusLinesViewController.swift; sourceTree = "<group>"; };
@@ -144,6 +146,15 @@
 			path = RouteExploration;
 			sourceTree = "<group>";
 		};
+		D40E63CE1FF6D1FD00BBF3E6 /* MainMap */ = {
+			isa = PBXGroup;
+			children = (
+				D40E63CC1FF6CCBF00BBF3E6 /* MainMapViewController.swift */,
+				D40E63CF1FF6D24400BBF3E6 /* MainMapViewModel.swift */,
+			);
+			path = MainMap;
+			sourceTree = "<group>";
+		};
 		D4248E721FE440EA00E1B342 = {
 			isa = PBXGroup;
 			children = (
@@ -171,7 +182,7 @@
 			children = (
 				D4248E7E1FE440EA00E1B342 /* AppDelegate.swift */,
 				D4248E801FE440EA00E1B342 /* BusLinesViewController.swift */,
-				D40E63CC1FF6CCBF00BBF3E6 /* MainMapViewController.swift */,
+				D40E63CE1FF6D1FD00BBF3E6 /* MainMap */,
 				D4612D9D1FE8B33200EF30C2 /* StopModel.swift */,
 				D4612DA61FEC26E800EF30C2 /* BusInfoProvider.swift */,
 				D40E63C21FF401E100BBF3E6 /* LocationManager.swift */,
@@ -546,6 +557,7 @@
 				D4248E811FE440EA00E1B342 /* BusLinesViewController.swift in Sources */,
 				D4612DA71FEC26E800EF30C2 /* BusInfoProvider.swift in Sources */,
 				D40E63BF1FF2D31100BBF3E6 /* StopSelectionViewController.swift in Sources */,
+				D40E63D01FF6D24400BBF3E6 /* MainMapViewModel.swift in Sources */,
 				D40E63BD1FF2C69D00BBF3E6 /* DirectionSelectionViewModel.swift in Sources */,
 				D4248E7F1FE440EA00E1B342 /* AppDelegate.swift in Sources */,
 				D40E63C11FF2D31D00BBF3E6 /* StopSelectionViewModel.swift in Sources */,
