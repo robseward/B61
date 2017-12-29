@@ -17,6 +17,8 @@
 		D40E63C31FF401E100BBF3E6 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40E63C21FF401E100BBF3E6 /* LocationManager.swift */; };
 		D40E63C51FF4031F00BBF3E6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D40E63C41FF4031F00BBF3E6 /* CoreLocation.framework */; };
 		D40E63C91FF6038D00BBF3E6 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40E63C81FF6038D00BBF3E6 /* WebViewController.swift */; };
+		D40E63CB1FF6C92300BBF3E6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D40E63CA1FF6C92300BBF3E6 /* MapKit.framework */; };
+		D40E63CD1FF6CCBF00BBF3E6 /* MainMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40E63CC1FF6CCBF00BBF3E6 /* MainMapViewController.swift */; };
 		D4248E7F1FE440EA00E1B342 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4248E7E1FE440EA00E1B342 /* AppDelegate.swift */; };
 		D4248E811FE440EA00E1B342 /* BusLinesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4248E801FE440EA00E1B342 /* BusLinesViewController.swift */; };
 		D4248E841FE440EA00E1B342 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4248E821FE440EA00E1B342 /* Main.storyboard */; };
@@ -64,6 +66,8 @@
 		D40E63C21FF401E100BBF3E6 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		D40E63C41FF4031F00BBF3E6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		D40E63C81FF6038D00BBF3E6 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		D40E63CA1FF6C92300BBF3E6 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		D40E63CC1FF6CCBF00BBF3E6 /* MainMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapViewController.swift; sourceTree = "<group>"; };
 		D4248E7B1FE440EA00E1B342 /* BusRider.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BusRider.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4248E7E1FE440EA00E1B342 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4248E801FE440EA00E1B342 /* BusLinesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusLinesViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D40E63CB1FF6C92300BBF3E6 /* MapKit.framework in Frameworks */,
 				D40E63C51FF4031F00BBF3E6 /* CoreLocation.framework in Frameworks */,
 				21CAEABFC4D5C1EC980885C7 /* Pods_BusRider.framework in Frameworks */,
 			);
@@ -119,6 +124,7 @@
 		7A07A214B21C954D23209B52 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D40E63CA1FF6C92300BBF3E6 /* MapKit.framework */,
 				D40E63C41FF4031F00BBF3E6 /* CoreLocation.framework */,
 				347E7B85D866BDD95B5B25B4 /* Pods_BusRider.framework */,
 				F92E467E494AA3856BFED2E4 /* Pods_BusRiderTests.framework */,
@@ -165,6 +171,7 @@
 			children = (
 				D4248E7E1FE440EA00E1B342 /* AppDelegate.swift */,
 				D4248E801FE440EA00E1B342 /* BusLinesViewController.swift */,
+				D40E63CC1FF6CCBF00BBF3E6 /* MainMapViewController.swift */,
 				D4612D9D1FE8B33200EF30C2 /* StopModel.swift */,
 				D4612DA61FEC26E800EF30C2 /* BusInfoProvider.swift */,
 				D40E63C21FF401E100BBF3E6 /* LocationManager.swift */,
@@ -530,6 +537,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D40E63CD1FF6CCBF00BBF3E6 /* MainMapViewController.swift in Sources */,
 				D4612D9A1FE86A8F00EF30C2 /* MTAService.swift in Sources */,
 				D40E63C91FF6038D00BBF3E6 /* WebViewController.swift in Sources */,
 				D40E63BB1FF2C63D00BBF3E6 /* DirectionSelectionViewController.swift in Sources */,

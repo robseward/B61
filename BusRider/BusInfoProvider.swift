@@ -12,7 +12,8 @@ import Moya
 import CoreLocation
 
 class BusInfoProvider {
-    var provider = MoyaProvider<MTAService>(stubClosure: MoyaProvider.immediatelyStub)//MoyaProvider<MTAService>()
+//    var provider = MoyaProvider<MTAService>(stubClosure: MoyaProvider.immediatelyStub)
+    var provider = MoyaProvider<MTAService>()
     
     func nearbyBusLines(lat: CLLocationDegrees, lon: CLLocationDegrees) -> PrimitiveSequence<SingleTrait, [RouteModel]> {
         let request = MTAService.stopsForLocation(lat: lat, lon: lon, latSpan: 0.005, lonSpan: 0.005)

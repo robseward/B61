@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dgj-xh-hH8">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="QgL-s4-kcr">
@@ -89,7 +89,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MJD-ta-DZ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="446" y="583"/>
+            <point key="canvasLocation" x="434" y="422"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1Y0-2l-LeJ">
@@ -100,12 +100,44 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="KCh-AF-NBy"/>
+                        <segue destination="kJA-Cb-wIb" kind="relationship" relationship="rootViewController" id="4dx-IN-wD7"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lCQ-er-K6f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1124" y="423"/>
+        </scene>
+        <!--Main Map View Controller-->
+        <scene sceneID="SSN-Td-8tU">
+            <objects>
+                <viewController id="kJA-Cb-wIb" customClass="MainMapViewController" customModule="BusRider" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WOI-MF-3g2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="d0p-21-PHe">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="I08-09-s2z" firstAttribute="trailing" secondItem="d0p-21-PHe" secondAttribute="trailing" id="9fu-YA-Pyi"/>
+                            <constraint firstItem="d0p-21-PHe" firstAttribute="top" secondItem="I08-09-s2z" secondAttribute="top" id="Bjo-hT-xpu"/>
+                            <constraint firstItem="I08-09-s2z" firstAttribute="bottom" secondItem="d0p-21-PHe" secondAttribute="bottom" id="KkO-Nd-LRi"/>
+                            <constraint firstItem="d0p-21-PHe" firstAttribute="top" secondItem="I08-09-s2z" secondAttribute="top" id="VaL-X1-Pqu"/>
+                            <constraint firstItem="I08-09-s2z" firstAttribute="bottom" secondItem="d0p-21-PHe" secondAttribute="bottom" id="aa5-Iu-gtF"/>
+                            <constraint firstItem="d0p-21-PHe" firstAttribute="leading" secondItem="I08-09-s2z" secondAttribute="leading" id="rgo-iV-pdh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="I08-09-s2z"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="hNJ-a8-tcx"/>
+                    <connections>
+                        <outlet property="mapView" destination="d0p-21-PHe" id="ctB-dL-HSi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9yY-uN-Jk4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1124" y="1154"/>
         </scene>
         <!--Web View Controller-->
         <scene sceneID="a8I-zy-fmS">
@@ -154,7 +186,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CsH-yz-czH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1024.8" y="1169.865067466267"/>
+            <point key="canvasLocation" x="-1124" y="-321"/>
         </scene>
         <!--Stop Selection View Controller-->
         <scene sceneID="L6G-Uh-Ah0">
@@ -194,7 +226,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hcG-iw-NPd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1295" y="733"/>
+            <point key="canvasLocation" x="1138" y="422"/>
         </scene>
     </scenes>
 </document>
