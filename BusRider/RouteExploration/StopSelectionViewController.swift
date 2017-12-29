@@ -36,6 +36,19 @@ class StopSelectionViewController: UIViewController, UITableViewDelegate {
                 self.tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.top, animated: true)
             }
         }).disposed(by: disposeBag)
+        
+        tableView.rx.modelSelected(StopModel.self)
+            .subscribe(onNext: { stop in
+                self.showStopPage(stop: stop)
+            }).disposed(by: disposeBag)
+    }
+    
+    func showStopPage(stop: StopModel) {
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        if let vc = storyBoard.instantiateViewController(withIdentifier: "WebViewController") as? WebViewController {
+            present(vc, animated: true, completion: nil)
+            vc.showStopPage(stopCode: stop.code)
+        }
     }
     
     func setStopGroup(stopGroup: StopGroup) {
