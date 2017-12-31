@@ -12,4 +12,6 @@ import RxCocoa
 
 class MainMapViewModel {
     
+    
+    
 }

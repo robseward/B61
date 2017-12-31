@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:BusRider.playground">
+   </FileRef>
+   <FileRef
       location = "group:BusRider.xcodeproj">
    </FileRef>
    <FileRef
