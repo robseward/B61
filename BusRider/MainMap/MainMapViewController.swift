@@ -13,6 +13,7 @@ class MainMapViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
     var viewModel = MainMapViewModel()
+    let routeButtonsController = RouteButtonsViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,10 @@ class MainMapViewController: UIViewController {
         _configureMap()
     }
 
+    private func _addRouteButtonsView() {
+        
+    }
+    
     private func _configureMap() {
         mapView.showsUserLocation = false
         mapView.userTrackingMode = .follow

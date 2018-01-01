@@ -1,60 +1,75 @@
-//: A UIKit based Playground for presenting user interface
-  
-import UIKit
-import PlaygroundSupport
-import RxSwift
+//
+//  RouteButtonsViewController.swift
+//  BusRider
+//
+//  Created by Robert Seward on 12/31/17.
+//  Copyright © 2017 Robert Seward. All rights reserved.
+//
 
-class MyViewController : UIViewController {
-    var buttonInfo: [(String, UIColor)]!
-    var buttons: [UIButton]!
-    var buttonsAndConstraints: [UIButton : (NSLayoutConstraint, NSLayoutConstraint)]!
-    
-    override func loadView() {
-        let view = UIView()
-        view.backgroundColor = .white
-        self.view = view
-    }
+import UIKit
+import RxSwift
+import RxCocoa
+
+struct ButtonInfo {
+    let route: RouteModel
+    let positioningConstraints: (NSLayoutConstraint, NSLayoutConstraint)
+}
+
+class RouteButtonsViewController: UIViewController {
+
+    var buttons = [UIButton]()
+    var buttonInfo = [UIButton : ButtonInfo]()
+    var locationView = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let locationView = UIView()
+        self.view.backgroundColor = UIColor.clear
+        _setupLocationView()
+    }
+
+    private func _setupLocationView() {
+        locationView = UIView()
         self.view.addSubview(locationView)
         locationView.translatesAutoresizingMaskIntoConstraints = false
         locationView.backgroundColor = UIColor.yellow
         let width: CGFloat = 15
         NSLayoutConstraint.activate(
-            [locationView.widthAnchor.constraint(equalToConstant: width),
-             locationView.heightAnchor.constraint(equalToConstant: width),
-             locationView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-             locationView.centerYAnchor.constraint(equalTo: view.centerYAnchor)])
+        [locationView.widthAnchor.constraint(equalToConstant: width),
+        locationView.heightAnchor.constraint(equalToConstant: width),
+        locationView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+        locationView.centerYAnchor.constraint(equalTo: view.centerYAnchor)])
         locationView.layer.cornerRadius = width/2.0
-        
-        
-        buttonInfo = [("B01", UIColor.blue),
-                       ("B02", UIColor.red),
-                       ("B03", UIColor.gray),
-                       ("B04", UIColor.brown),
-                        ("B05", UIColor.blue),
-                        ("B06", UIColor.red),
-                       ]
-        
-        buttons = buttonInfo.map { (name, color) -> UIButton in
-            let size = CGSize(width: 50, height: 50)
-            return createButton(title: name, color: color, size: size)
-        }
-       
-        buttonsAndConstraints = [UIButton : (NSLayoutConstraint, NSLayoutConstraint)]()
-        buttons.forEach({ button in
-            let constraints = self.addButtonToCenterOfView(button: button)
-            buttonsAndConstraints[button] = constraints
-            button.alpha = 0
+    }
+    
+    func removeButtons(animated: Bool) {
+        let duration = animated ? 0.3 : 0.0
+        UIView.animate(withDuration: duration, animations: {
+            self.buttons.forEach({
+                $0.alpha = 0
+            })
+        }, completion: { _ in
+            self.buttons.forEach({ $0.removeFromSuperview() })
         })
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    func createButtonsForRoutes(routes: [RouteModel]) {
+        buttons = routes.map { route -> UIButton in
+            let size = CGSize(width: 50, height: 50)
+            return _createButton(title: route.shortName, color: route.color, size: size)
+        }
         
+        for i in 0..<buttons.count {
+            let button = buttons[i]
+            let route = routes[i]
+            let constraints = self._addButtonToCenterOfView(button: button)
+            let info = ButtonInfo(route: route, positioningConstraints: constraints)
+            buttonInfo[button] = info
+            button.alpha = 0
+        }
+    }
+    
+    func displayButtons() {
+        // calculate positions around circle
         let locations = buttons.enumerated().map({ index, button -> (UIButton, CGPoint) in
             var offset = CGPoint.zero
             
@@ -66,9 +81,10 @@ class MyViewController : UIViewController {
             return (button, offset)
         })
         
+        // Animate buttons
         locations.forEach({ (button, offset) in
             print(offset)
-            let constraints = buttonsAndConstraints[button]!
+            let constraints = buttonInfo[button]!.positioningConstraints
             
             UIView.animate(withDuration: 3.3, animations: {
                 constraints.0.constant = offset.x
@@ -79,9 +95,7 @@ class MyViewController : UIViewController {
         })
     }
     
-
-    
-    private func createButton(title: String,
+    private func _createButton(title: String,
                               color: UIColor,
                               size: CGSize) -> UIButton {
         let button = UIButton(frame: CGRect.zero)
@@ -95,22 +109,11 @@ class MyViewController : UIViewController {
         return button
     }
     
-    /// Returns offset
-    private func addButtonToCenterOfView(button: UIButton) -> (NSLayoutConstraint, NSLayoutConstraint) {
+    /// Returns positioning constraints
+    private func _addButtonToCenterOfView(button: UIButton) -> (NSLayoutConstraint, NSLayoutConstraint) {
         view.addSubview(button)
         let constraints = [button.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 20), button.centerYAnchor.constraint(equalTo: view.centerYAnchor)]
         NSLayoutConstraint.activate(constraints)
         return (constraints[0], constraints[1])
     }
 }
-
-
-
-class ViewModel {
-    
-}
-
-
-
-
-PlaygroundPage.current.liveView = MyViewController()
