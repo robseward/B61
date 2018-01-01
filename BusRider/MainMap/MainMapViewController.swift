@@ -8,22 +8,41 @@
 
 import UIKit
 import MapKit
+import RxSwift
 
 class MainMapViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
     var viewModel = MainMapViewModel()
-    let routeButtonsController = RouteButtonsViewController()
+    var routeButtonsViewController: RouteButtonsViewController?
+    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
         _addTrackingButton()
         _configureMap()
+        
+        viewModel.routes.asObservable().subscribe(onNext: { (routes) in
+            self.routeButtonsViewController?.removeButtons(animated: true)
+            self.routeButtonsViewController?.createButtonsForRoutes(routes: routes)
+            self.routeButtonsViewController?.displayButtons()
+        }).disposed(by: disposeBag)
     }
 
-    private func _addRouteButtonsView() {
+    override func viewDidAppear(_ animated: Bool) {
+        let lat: CLLocationDegrees = 40.6881291027667
+        let lon: CLLocationDegrees = -73.96751666498955
+        let location = CLLocation(latitude: lat, longitude: lon)
         
+        viewModel.location.value = location
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let routeViewController = segue.destination as? RouteButtonsViewController {
+            self.routeButtonsViewController = routeViewController
+        }
     }
     
     private func _configureMap() {
