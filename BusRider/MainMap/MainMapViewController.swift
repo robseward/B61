@@ -24,9 +24,10 @@ class MainMapViewController: UIViewController {
         _configureMap()
         
         viewModel.routes.asObservable().subscribe(onNext: { (routes) in
-            self.routeButtonsViewController?.removeButtons(animated: true)
-            self.routeButtonsViewController?.createButtonsForRoutes(routes: routes)
-            self.routeButtonsViewController?.displayButtons()
+            self.routeButtonsViewController?.removeButtons(animated: true, completion: {
+                self.routeButtonsViewController?.createButtonsForRoutes(routes: routes)
+                self.routeButtonsViewController?.displayButtons(animated: true)
+            })
         }).disposed(by: disposeBag)
     }
 

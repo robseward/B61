@@ -41,7 +41,7 @@ class RouteButtonsViewController: UIViewController {
         locationView.layer.cornerRadius = width/2.0
     }
     
-    func removeButtons(animated: Bool) {
+    func removeButtons(animated: Bool, completion: @escaping ()->() ) {
         let duration = animated ? 0.3 : 0.0
         UIView.animate(withDuration: duration, animations: {
             self.buttons.forEach({
@@ -49,6 +49,7 @@ class RouteButtonsViewController: UIViewController {
             })
         }, completion: { _ in
             self.buttons.forEach({ $0.removeFromSuperview() })
+            completion()
         })
     }
     
@@ -68,7 +69,7 @@ class RouteButtonsViewController: UIViewController {
         }
     }
     
-    func displayButtons() {
+    func displayButtons(animated: Bool) {
         // calculate positions around circle
         let locations = buttons.enumerated().map({ index, button -> (UIButton, CGPoint) in
             var offset = CGPoint.zero
@@ -86,11 +87,14 @@ class RouteButtonsViewController: UIViewController {
             print(offset)
             let constraints = buttonInfo[button]!.positioningConstraints
             
-            UIView.animate(withDuration: 3.3, animations: {
+            let duration = animated ? 0.3 : 0
+            UIView.animate(withDuration: duration, animations: {
                 constraints.0.constant = offset.x
                 constraints.1.constant = offset.y
                 button.alpha = 1.0
                 self.view.layoutIfNeeded()
+            }, completion: { _ in
+
             })
         })
     }
