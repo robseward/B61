@@ -1,4 +1,7 @@
 PODS:
+  - Action (3.5.0):
+    - RxCocoa (~> 4.0)
+    - RxSwift (~> 4.0)
   - Alamofire (4.6.0)
   - Moya (10.0.1):
     - Moya/Core (= 10.0.1)
@@ -21,6 +24,7 @@ PODS:
   - SwiftyJSON (4.0.0)
 
 DEPENDENCIES:
+  - Action
   - Alamofire (~> 4.5)
   - Moya-SwiftyJSONMapper/RxSwift
   - Moya/RxSwift
@@ -29,6 +33,7 @@ DEPENDENCIES:
   - SwiftyJSON
 
 SPEC CHECKSUMS:
+  Action: d60087ebce41b969d1afdad01e2fa1372a82f26e
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
   Moya: 9e621707ff754eeb51ff3ec51a3d54e517c0733a
   Moya-SwiftyJSONMapper: ceecd41a96b31ae4d17cd80a271a544563fe2c57
@@ -37,6 +42,6 @@ SPEC CHECKSUMS:
   RxSwift: fd680d75283beb5e2559486f3c0ff852f0d35334
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: 119d7503bfac07335506fb8ef2fa0e1bcb57beec
+PODFILE CHECKSUM: 7af7fb386e705678295a99d6ba129ed4ca89a7b9
 
 COCOAPODS: 1.3.1

@@ -12,7 +12,8 @@ target 'BusRider' do
   pod 'Moya-SwiftyJSONMapper/RxSwift'
   pod 'RxSwift'
   pod 'RxCocoa'
-
+  pod 'Action'
+  
   target 'BusRiderTests' do
     inherit! :search_paths
     # Pods for testing
