@@ -60,8 +60,16 @@ class MainMapViewController: UIViewController {
     }
     
     @objc func routeButtonPressed(sender: UIButton) {
-        if let route = routeButtonsViewController?.buttonInfo[sender] {
-            print(route.route.shortName)
+        if let route = routeButtonsViewController?.buttonInfo[sender]?.route {
+            self._showDirectionSelection(routeId: route.routeId)
+        }
+    }
+    
+    private func _showDirectionSelection(routeId: String) {
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        if let vc = storyBoard.instantiateViewController(withIdentifier: "DirectionSelection") as? DirectionSelectionViewController {
+            vc.routeId = routeId
+            show(vc, sender: self)
         }
     }
     
