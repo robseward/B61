@@ -154,4 +154,16 @@ class RouteModel : ALSwiftyJSONAble {
             alpha: CGFloat(1.0)
         )
     }
+
+    class var stub: RouteModel {
+        let json = JSON(parseJSON: """
+                                    {
+                                        "longName": "Test Route to Brooklyn",
+                                        "shortName": "B69",
+                                        "id": "foo",
+                                        "color": "FF0000"
+                                    }
+                                    """)
+        return RouteModel(jsonData: json)!
+    }
 }
