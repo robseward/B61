@@ -53,7 +53,7 @@ class RouteButtonsViewController: UIViewController {
         })
     }
     
-    func createButtonsForRoutes(routes: [RouteModel]) {
+    func createButtonsForRoutes(routes: [RouteModel]) -> [UIButton] {
         buttons = routes.map { route -> UIButton in
             let size = CGSize(width: 50, height: 50)
             return _createButton(title: route.shortName, color: route.color, size: size)
@@ -67,6 +67,8 @@ class RouteButtonsViewController: UIViewController {
             buttonInfo[button] = info
             button.alpha = 0
         }
+        
+        return buttons
     }
     
     func displayButtons(animated: Bool) {

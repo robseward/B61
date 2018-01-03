@@ -9,6 +9,8 @@
 import UIKit
 import MapKit
 import RxSwift
+import RxCocoa
+import Action
 
 class MainMapViewController: UIViewController {
 
@@ -22,13 +24,7 @@ class MainMapViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
         _addTrackingButton()
         _configureMap()
-        
-        viewModel.routes.asObservable().subscribe(onNext: { (routes) in
-            self.routeButtonsViewController?.removeButtons(animated: true, completion: {
-                self.routeButtonsViewController?.createButtonsForRoutes(routes: routes)
-                self.routeButtonsViewController?.displayButtons(animated: true)
-            })
-        }).disposed(by: disposeBag)
+        _setupBindings()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -44,6 +40,36 @@ class MainMapViewController: UIViewController {
         if let routeViewController = segue.destination as? RouteButtonsViewController {
             self.routeButtonsViewController = routeViewController
         }
+    }
+    
+    private func _setupBindings() {
+
+        
+        viewModel.routes.asObservable().subscribe(onNext: { (routes) in
+            self.routeButtonsViewController?.removeButtons(animated: true, completion: {
+                guard let routeButtonsViewController = self.routeButtonsViewController else { return }
+                let buttons = routeButtonsViewController.createButtonsForRoutes(routes: routes)
+                for i in 0..<buttons.count {
+                    var button = buttons[i]
+                    let route = routes[i]
+//                    let action = Action<(UIButton)->RouteModel, RouteModel> { _ in
+//                        return .just(route)
+//                    }
+//                    button.rx.bind(to: action, input: { button in
+//                        return route
+//                    })
+                    let action = Action<String,String> { input in
+                        print(input)
+                        return .just(input)
+                    }
+                    button.rx.bind(to: action) {_ in return "Hello"}
+                }
+                
+                self.routeButtonsViewController?.displayButtons(animated: true)
+                
+                //Bind buttons
+            })
+        }).disposed(by: disposeBag)
     }
     
     private func _configureMap() {

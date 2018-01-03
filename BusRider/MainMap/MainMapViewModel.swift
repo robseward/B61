@@ -13,8 +13,12 @@ import CoreLocation
 
 class MainMapViewModel {
     
+    //Input
     var location: Variable<CLLocation>
+    
+    //output
     var routes: Variable<[RouteModel]>
+
     private var busInfoProvider = BusInfoProvider()
     private let disposeBag = DisposeBag()
     
