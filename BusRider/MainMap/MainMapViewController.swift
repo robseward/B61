@@ -50,26 +50,19 @@ class MainMapViewController: UIViewController {
                 guard let routeButtonsViewController = self.routeButtonsViewController else { return }
                 let buttons = routeButtonsViewController.createButtonsForRoutes(routes: routes)
                 for i in 0..<buttons.count {
-                    var button = buttons[i]
-                    let route = routes[i]
-//                    let action = Action<(UIButton)->RouteModel, RouteModel> { _ in
-//                        return .just(route)
-//                    }
-//                    button.rx.bind(to: action, input: { button in
-//                        return route
-//                    })
-                    let action = Action<String,String> { input in
-                        print(input)
-                        return .just(input)
-                    }
-                    button.rx.bind(to: action) {_ in return "Hello"}
+                    let button = buttons[i]
+                    button.addTarget(self, action: #selector(self.routeButtonPressed(sender:)), for: .touchUpInside)
                 }
                 
                 self.routeButtonsViewController?.displayButtons(animated: true)
-                
-                //Bind buttons
             })
         }).disposed(by: disposeBag)
+    }
+    
+    @objc func routeButtonPressed(sender: UIButton) {
+        if let route = routeButtonsViewController?.buttonInfo[sender] {
+            print(route.route.shortName)
+        }
     }
     
     private func _configureMap() {
