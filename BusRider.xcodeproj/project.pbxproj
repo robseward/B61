@@ -11,6 +11,7 @@
 		3782029B1B505C7F0DB1065E /* Pods_BusRiderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F92E467E494AA3856BFED2E4 /* Pods_BusRiderTests.framework */; };
 		7BC150FD419E063F77196E41 /* Pods_BusRiderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA3F103A1A90A856D32C89DB /* Pods_BusRiderUITests.framework */; };
 		D40441B91FFEB212002C11BD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40441B81FFEB212002C11BD /* Extensions.swift */; };
+		D404434F1FFEE75B00251D78 /* PassThroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D404434E1FFEE75B00251D78 /* PassThroughView.swift */; };
 		D40E63BB1FF2C63D00BBF3E6 /* DirectionSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40E63BA1FF2C63D00BBF3E6 /* DirectionSelectionViewController.swift */; };
 		D40E63BD1FF2C69D00BBF3E6 /* DirectionSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40E63BC1FF2C69D00BBF3E6 /* DirectionSelectionViewModel.swift */; };
 		D40E63BF1FF2D31100BBF3E6 /* StopSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40E63BE1FF2D31100BBF3E6 /* StopSelectionViewController.swift */; };
@@ -62,6 +63,7 @@
 		AD9BCAA68A7CA267FB96ACCA /* Pods-BusRider.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusRider.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BusRider/Pods-BusRider.debug.xcconfig"; sourceTree = "<group>"; };
 		C0A845FE45ABCBB4C997B51C /* Pods-BusRiderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusRiderTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BusRiderTests/Pods-BusRiderTests.release.xcconfig"; sourceTree = "<group>"; };
 		D40441B81FFEB212002C11BD /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		D404434E1FFEE75B00251D78 /* PassThroughView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassThroughView.swift; sourceTree = "<group>"; };
 		D40E63BA1FF2C63D00BBF3E6 /* DirectionSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionSelectionViewController.swift; sourceTree = "<group>"; };
 		D40E63BC1FF2C69D00BBF3E6 /* DirectionSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionSelectionViewModel.swift; sourceTree = "<group>"; };
 		D40E63BE1FF2D31100BBF3E6 /* StopSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopSelectionViewController.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				D40E63CC1FF6CCBF00BBF3E6 /* MainMapViewController.swift */,
 				D40E63CF1FF6D24400BBF3E6 /* MainMapViewModel.swift */,
 				D40E63D11FF9C35900BBF3E6 /* RouteButtonsViewController.swift */,
+				D404434E1FFEE75B00251D78 /* PassThroughView.swift */,
 			);
 			path = MainMap;
 			sourceTree = "<group>";
@@ -560,6 +563,7 @@
 				D40E63BB1FF2C63D00BBF3E6 /* DirectionSelectionViewController.swift in Sources */,
 				D40E63C31FF401E100BBF3E6 /* LocationManager.swift in Sources */,
 				D4612D9E1FE8B33200EF30C2 /* StopModel.swift in Sources */,
+				D404434F1FFEE75B00251D78 /* PassThroughView.swift in Sources */,
 				D4612DA71FEC26E800EF30C2 /* BusInfoProvider.swift in Sources */,
 				D40E63BF1FF2D31100BBF3E6 /* StopSelectionViewController.swift in Sources */,
 				D40E63D01FF6D24400BBF3E6 /* MainMapViewModel.swift in Sources */,
