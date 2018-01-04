@@ -21,7 +21,7 @@ class StopSelectionViewModel {
 
     init() {
         items.asObservable().subscribe(onNext: { (stops) in
-            guard let location = LocationManager.shared.selectedLocation else { return }
+            guard let location = LocationManager.shared.selectedLocation.value else { return }
             self.closestStopIndex = self.findClosestStopIndex(stops: stops, target: location)
         }).disposed(by: disposeBag)
     }

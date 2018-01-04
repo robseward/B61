@@ -12,7 +12,7 @@ import RxSwift
 import RxCocoa
 import Action
 
-class MainMapViewController: UIViewController {
+class MainMapViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     var viewModel = MainMapViewModel()
@@ -22,6 +22,7 @@ class MainMapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
+        mapView.delegate = self
         _addTrackingButton()
         _configureMap()
         _setupBindings()
@@ -85,6 +86,20 @@ class MainMapViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         let guide = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([button.bottomAnchor.constraint(equalTo: guide.bottomAnchor, constant: -10), button.trailingAnchor.constraint(equalTo: guide.trailingAnchor, constant: -10)])
+    }
+    
+    //MARK: MapView delegate methods
+    
+    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+        print("User location update")
+    }
+    
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        print("region did change: \(mapView.centerCoordinate)")
+    }
+    
+    func mapView(_ mapView: MKMapView, didChange mode: MKUserTrackingMode, animated: Bool) {
+        print("Mapview mode change: \(mode)")
     }
 
 }
