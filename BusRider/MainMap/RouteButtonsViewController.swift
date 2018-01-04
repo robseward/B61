@@ -120,6 +120,7 @@ class RouteButtonsViewController: UIViewController {
         view.addSubview(button)
         let constraints = [button.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 20), button.centerYAnchor.constraint(equalTo: view.centerYAnchor)]
         NSLayoutConstraint.activate(constraints)
+        view.layoutIfNeeded()
         return (constraints[0], constraints[1])
     }
 }
