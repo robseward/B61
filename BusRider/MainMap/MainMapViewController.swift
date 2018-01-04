@@ -92,7 +92,12 @@ class MainMapViewController: UIViewController, MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
         print("User location update")
-        LocationManager.shared.selectedLocation.value = userLocation.location?.coordinate
+        switch mapView.userTrackingMode {
+        case .follow, .followWithHeading:
+            LocationManager.shared.selectedLocation.value = userLocation.location?.coordinate
+        default:
+            break
+        }
     }
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
