@@ -29,11 +29,11 @@ class MainMapViewController: UIViewController, MKMapViewDelegate {
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        let lat: CLLocationDegrees = 40.6881291027667
-        let lon: CLLocationDegrees = -73.96751666498955
-        let location = CLLocation(latitude: lat, longitude: lon)
-        
-        viewModel.location.value = location
+//        let lat: CLLocationDegrees = 40.6881291027667
+//        let lon: CLLocationDegrees = -73.96751666498955
+//        let location = CLLocation(latitude: lat, longitude: lon)
+//        
+//        viewModel.location.value = location
     }
     
     
@@ -92,10 +92,12 @@ class MainMapViewController: UIViewController, MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
         print("User location update")
+        LocationManager.shared.selectedLocation.value = userLocation.location?.coordinate
     }
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         print("region did change: \(mapView.centerCoordinate)")
+        LocationManager.shared.selectedLocation.value = mapView.centerCoordinate
     }
     
     func mapView(_ mapView: MKMapView, didChange mode: MKUserTrackingMode, animated: Bool) {

@@ -13,5 +13,5 @@ import RxSwift
 class LocationManager: NSObject, CLLocationManagerDelegate {
     static var shared = LocationManager()
 
-    var selectedLocation = Variable<CLLocation?>(nil)
+    var selectedLocation = Variable<CLLocationCoordinate2D?>(nil)
 }

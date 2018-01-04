@@ -77,7 +77,7 @@ class StopModel : ALSwiftyJSONAble {
     let name: String
     let stopId: String
     let routes: [RouteModel]
-    let location: CLLocation
+    let location: CLLocationCoordinate2D
     
     required init?(jsonData: JSON) {
         if
@@ -91,7 +91,7 @@ class StopModel : ALSwiftyJSONAble {
             self.name = name
             self.stopId = stopId
             self.routes = RouteModel.routeCollection(jsonData: jsonData["routes"])
-            self.location = CLLocation(latitude: lat, longitude: lon)
+            self.location = CLLocationCoordinate2D(latitude: lat, longitude: lon)
         } else {
             return nil
         }

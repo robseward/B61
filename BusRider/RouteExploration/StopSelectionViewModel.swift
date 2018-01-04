@@ -26,7 +26,7 @@ class StopSelectionViewModel {
         }).disposed(by: disposeBag)
     }
     
-    func findClosestStopIndex(stops: [StopModel], target: CLLocation) -> Int? {
+    func findClosestStopIndex(stops: [StopModel], target: CLLocationCoordinate2D) -> Int? {
         var min: Double = Double.greatestFiniteMagnitude
         var result: Int?
         

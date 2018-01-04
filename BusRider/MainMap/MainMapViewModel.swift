@@ -14,7 +14,7 @@ import CoreLocation
 class MainMapViewModel {
     
     //Input
-    var location: Variable<CLLocation>
+    var location: Variable<CLLocationCoordinate2D>
     
     //output
     var routes: Variable<[RouteModel]>
@@ -23,19 +23,25 @@ class MainMapViewModel {
     private let disposeBag = DisposeBag()
     
     init() {
-        self.location = Variable<CLLocation>(CLLocation(latitude: 0, longitude: 0))
+        self.location = Variable<CLLocationCoordinate2D>(CLLocationCoordinate2D(latitude: 0, longitude: 0))
         self.routes = Variable<[RouteModel]>([])
         _configure()
     }
     
     private func _configure() {
+        LocationManager.shared.selectedLocation.asObservable()
+            .subscribe(onNext: { managerLocation in
+                guard let managerLocation = managerLocation else { return }
+                self.location.value = managerLocation
+            }).disposed(by: disposeBag)
+        
         self.location.asObservable().subscribe(onNext: { (location) in
             self._updateRoutes(location: location)
         }).disposed(by: disposeBag)
     }
     
-    private func _updateRoutes(location: CLLocation) {
-        self.busInfoProvider.nearbyBusLines(lat: location.coordinate.latitude, lon: location.coordinate.longitude)
+    private func _updateRoutes(location: CLLocationCoordinate2D) {
+        self.busInfoProvider.nearbyBusLines(lat: location.latitude, lon: location.longitude)
             .subscribe(onSuccess: { (routes) in
                 self.routes.value = routes
             }, onError: { error in
