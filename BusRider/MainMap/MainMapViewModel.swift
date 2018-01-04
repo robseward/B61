@@ -30,6 +30,18 @@ class MainMapViewModel {
     
     private func _configure() {
         LocationManager.shared.selectedLocation.asObservable()
+            .distinctUntilChanged({ (locationA, locationB) -> Bool in
+                if let locationA = locationA, let locationB = locationB {
+                    let radius: Double = 100
+                    let d = abs(locationA.distance(from: locationB))
+                    print("Distance: \(d)")
+                    return d < radius
+                } else if locationA == nil && locationB != nil || locationB == nil && locationA != nil {
+                    return false
+                } else {
+                    return true
+                }
+            })
             .subscribe(onNext: { managerLocation in
                 guard let managerLocation = managerLocation else { return }
                 self.location.value = managerLocation

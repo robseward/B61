@@ -16,3 +16,7 @@ extension CLLocationCoordinate2D {
         return CLLocation(latitude: latitude, longitude: longitude).distance(from: destination)
     }
 }
+
+func == (l: CLLocationCoordinate2D, r: CLLocationCoordinate2D) -> Bool {
+    return l.latitude == r.latitude && l.longitude == r.longitude
+}
