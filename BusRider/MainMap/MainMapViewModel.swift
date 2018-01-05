@@ -28,7 +28,7 @@ class MainMapViewModel {
     var routes: Variable<[RouteModel]>
     var polylines = Variable<[RouteID : [MKPolyline]]>([:])
     var previousPolylines = [RouteID : [MKPolyline]]()
-    
+    var colorMap = [MKPolyline : UIColor]()
 
     private var busInfoProvider = BusInfoProvider()
     private let disposeBag = DisposeBag()
@@ -80,12 +80,17 @@ class MainMapViewModel {
     
     private func _getPolylines(routeId: String) {
         busInfoProvider.polylinesForRoute(routeId: routeId)
-            .subscribe(onSuccess: { polylines in
-                let mkPolylines = polylines.map { line -> MKPolyline in
+            .subscribe(onSuccess: { stopGroupings in
+                let mkPolylines = stopGroupings.polylines.map { line -> MKPolyline in
                     var line = line //needs to be a var to pass in as pointer
                     return MKPolyline(coordinates: &line, count: line.count)
                 }
+                let color = stopGroupings.route.color
+                for line in mkPolylines {
+                    self.colorMap[line] = color
+                }
                 self.polylines.value[routeId] = mkPolylines
+                
             }, onError: { error in
                 //print(error.localizedDescription)
             }).disposed(by: disposeBag)

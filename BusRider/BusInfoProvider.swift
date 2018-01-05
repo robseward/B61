@@ -41,13 +41,10 @@ class BusInfoProvider {
         return observable
     }
     
-    func polylinesForRoute(routeId: String) -> PrimitiveSequence<SingleTrait, [[CLLocationCoordinate2D]]> {
+    func polylinesForRoute(routeId: String) -> PrimitiveSequence<SingleTrait, StopGroupings> {
         let request = MTAService.stopsForRoute(routeId: routeId)
         let observable = provider.rx.request(request)
             .map(to: StopGroupings.self)
-            .map { (stopGroupings) -> [[CLLocationCoordinate2D]] in
-                return stopGroupings.polylines
-            }
         return observable
     }
     
