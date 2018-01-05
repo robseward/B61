@@ -61,9 +61,11 @@ class MainMapViewController: UIViewController, MKMapViewDelegate {
     }
     
     private func _addPolylines(polylines: [String : [[CLLocationCoordinate2D]]]) {
-        for (routeId, lines) in polylines {
+        for (_, lines) in polylines {
             for line in lines {
-                MKPolyline(coordinates: line, count: line.count)
+                var line = line //needs to be a var to pass in as pointer
+                let polyline = MKPolyline(coordinates: &line, count: line.count)
+                mapView.add(polyline)
             }
         }
         
@@ -110,6 +112,18 @@ class MainMapViewController: UIViewController, MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didChange mode: MKUserTrackingMode, animated: Bool) {
         print("Mapview mode change: \(mode)")
+    }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        //Return an `MKPolylineRenderer` for the `MKPolyline` in the `MKMapViewDelegate`s method
+        if let polyline = overlay as? MKPolyline {
+            let testlineRenderer = MKPolylineRenderer(polyline: polyline)
+            testlineRenderer.strokeColor = .blue
+            testlineRenderer.lineWidth = 2.0
+            return testlineRenderer
+        }
+        fatalError("Something wrong...")
+        //return MKOverlayRenderer()
     }
 
 }

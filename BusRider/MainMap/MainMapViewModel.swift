@@ -70,7 +70,11 @@ class MainMapViewModel {
     }
     
     private func _getPolylines(routeId: String) {
-        
-        
+        busInfoProvider.polylinesForRoute(routeId: routeId)
+            .subscribe(onSuccess: { polylines in
+                self.polylines.value[routeId] = polylines
+            }, onError: { error in
+                //print(error.localizedDescription)
+            }).disposed(by: disposeBag)
     }
 }
