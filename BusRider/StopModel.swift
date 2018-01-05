@@ -30,8 +30,13 @@ class StopList : ALSwiftyJSONAble {
 class StopGroupings : ALSwiftyJSONAble {
     let groupings: [StopGroup]
     var polylines = [[CLLocationCoordinate2D]]()
+    var route: RouteModel
     
     required init?(jsonData: JSON) {
+        let routeData = jsonData["data"]["route"]
+        guard let route = RouteModel(jsonData: routeData) else { return nil }
+        self.route = route
+        
         var groupings = [StopGroup]()
         let groups = jsonData["data"]["stopGroupings"]
         for (_,subJson):(String, JSON) in groups {

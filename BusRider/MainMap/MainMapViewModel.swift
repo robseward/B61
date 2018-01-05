@@ -10,16 +10,25 @@ import UIKit
 import RxSwift
 import RxCocoa
 import CoreLocation
+import MapKit
+
+struct RoutePolyline {
+    let routeId: String
+    let polylines: [MKPolyline]
+    let color: UIColor
+}
 
 class MainMapViewModel {
+    typealias RouteID = String
     
     //Input
     var location: Variable<CLLocationCoordinate2D>
     
     //output
     var routes: Variable<[RouteModel]>
+    var polylines = Variable<[RouteID : [MKPolyline]]>([:])
+    var previousPolylines = [RouteID : [MKPolyline]]()
     
-    var polylines = Variable<[String : [[CLLocationCoordinate2D]]]>([:])   //[routeId : polylines]
 
     private var busInfoProvider = BusInfoProvider()
     private let disposeBag = DisposeBag()
@@ -72,7 +81,11 @@ class MainMapViewModel {
     private func _getPolylines(routeId: String) {
         busInfoProvider.polylinesForRoute(routeId: routeId)
             .subscribe(onSuccess: { polylines in
-                self.polylines.value[routeId] = polylines
+                let mkPolylines = polylines.map { line -> MKPolyline in
+                    var line = line //needs to be a var to pass in as pointer
+                    return MKPolyline(coordinates: &line, count: line.count)
+                }
+                self.polylines.value[routeId] = mkPolylines
             }, onError: { error in
                 //print(error.localizedDescription)
             }).disposed(by: disposeBag)

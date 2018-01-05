@@ -60,12 +60,10 @@ class MainMapViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
-    private func _addPolylines(polylines: [String : [[CLLocationCoordinate2D]]]) {
-        for (_, lines) in polylines {
-            for line in lines {
-                var line = line //needs to be a var to pass in as pointer
-                let polyline = MKPolyline(coordinates: &line, count: line.count)
-                mapView.add(polyline)
+    private func _addPolylines(polylines: [String : [MKPolyline]]) {
+        for (_, polylines) in polylines {
+            for line in polylines {
+                mapView.add(line)
             }
         }
         
