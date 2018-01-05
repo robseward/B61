@@ -18,6 +18,8 @@ class MainMapViewModel {
     
     //output
     var routes: Variable<[RouteModel]>
+    
+    var polylines = Variable<[String : [[CLLocationCoordinate2D]]]>([:])   //[routeId : polylines]
 
     private var busInfoProvider = BusInfoProvider()
     private let disposeBag = DisposeBag()
@@ -50,6 +52,12 @@ class MainMapViewModel {
         self.location.asObservable().subscribe(onNext: { (location) in
             self._updateRoutes(location: location)
         }).disposed(by: disposeBag)
+        
+        routes.asObservable().subscribe(onNext: { routes in
+            routes.forEach { route in
+                self._getPolylines(routeId: route.routeId)
+            }
+        }).disposed(by: disposeBag)
     }
     
     private func _updateRoutes(location: CLLocationCoordinate2D) {
@@ -59,5 +67,10 @@ class MainMapViewModel {
             }, onError: { error in
                 print(error.localizedDescription)
             }).disposed(by: self.disposeBag)
+    }
+    
+    private func _getPolylines(routeId: String) {
+        
+        
     }
 }

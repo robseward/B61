@@ -10,6 +10,7 @@ import Foundation
 import Moya_SwiftyJSONMapper
 import SwiftyJSON
 import CoreLocation
+import Polyline
 
 class StopList : ALSwiftyJSONAble {
     let stops: [StopModel]
@@ -28,6 +29,8 @@ class StopList : ALSwiftyJSONAble {
 
 class StopGroupings : ALSwiftyJSONAble {
     let groupings: [StopGroup]
+    var polylines = [[CLLocationCoordinate2D]]()
+    
     required init?(jsonData: JSON) {
         var groupings = [StopGroup]()
         let groups = jsonData["data"]["stopGroupings"]
@@ -39,6 +42,16 @@ class StopGroupings : ALSwiftyJSONAble {
             }
         }
         
+        let polylinesData = jsonData["data"]["polylines"]
+        for (_, subJson):(String, JSON) in polylinesData {
+            if
+                let encodedLine =  subJson["points"].string,
+                let coordinates: [CLLocationCoordinate2D] = decodePolyline(encodedLine)
+            {
+                self.polylines.append(coordinates)
+            }
+        }
+ 
         var stops = [String : StopModel]()
         let stopArray = jsonData["data"]["stops"]
         for (_,subJson):(String, JSON) in stopArray {

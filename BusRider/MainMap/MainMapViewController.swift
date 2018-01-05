@@ -27,15 +27,6 @@ class MainMapViewController: UIViewController, MKMapViewDelegate {
         _configureMap()
         _setupBindings()
     }
-
-    override func viewDidAppear(_ animated: Bool) {
-//        let lat: CLLocationDegrees = 40.6881291027667
-//        let lon: CLLocationDegrees = -73.96751666498955
-//        let location = CLLocation(latitude: lat, longitude: lon)
-//        
-//        viewModel.location.value = location
-    }
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let routeViewController = segue.destination as? RouteButtonsViewController {
@@ -44,8 +35,6 @@ class MainMapViewController: UIViewController, MKMapViewDelegate {
     }
     
     private func _setupBindings() {
-
-        
         viewModel.routes.asObservable().subscribe(onNext: { (routes) in
             self.routeButtonsViewController?.removeButtons(animated: true, completion: {
                 guard let routeButtonsViewController = self.routeButtonsViewController else { return }
@@ -58,12 +47,26 @@ class MainMapViewController: UIViewController, MKMapViewDelegate {
                 self.routeButtonsViewController?.displayButtons(animated: true)
             })
         }).disposed(by: disposeBag)
+        
+        viewModel.polylines.asObservable()
+            .subscribe(onNext: { polylines in
+                self._addPolylines(polylines: polylines)
+            }).disposed(by: disposeBag)
     }
     
     @objc func routeButtonPressed(sender: UIButton) {
         if let route = routeButtonsViewController?.buttonInfo[sender]?.route {
             self._showDirectionSelection(routeId: route.routeId)
         }
+    }
+    
+    private func _addPolylines(polylines: [String : [[CLLocationCoordinate2D]]]) {
+        for (routeId, lines) in polylines {
+            for line in lines {
+                MKPolyline(coordinates: line, count: line.count)
+            }
+        }
+        
     }
     
     private func _showDirectionSelection(routeId: String) {
