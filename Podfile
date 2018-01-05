@@ -13,6 +13,7 @@ target 'BusRider' do
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'Action'
+  pod 'Polyline', '~> 4.0'
   
   target 'BusRiderTests' do
     inherit! :search_paths
