@@ -26,9 +26,10 @@ class MainMapViewModel {
     
     //output
     var routes: Variable<[RouteModel]>
-    var polylines = Variable<[RouteID : [MKPolyline]]>([:])
-    var displayedPolylines = [RouteID : [MKPolyline]]()
+    var polylinesToDisplay = Variable<[RouteID : [MKPolyline]]>([:])
+    var polylinesToRemove = Variable<[RouteID : [MKPolyline]]>([:])
     var colorMap = [MKPolyline : UIColor]()
+    private var routesToHide = [RouteID]()
 
     private var busInfoProvider = BusInfoProvider()
     private let disposeBag = DisposeBag()
@@ -62,21 +63,50 @@ class MainMapViewModel {
             self._updateRoutes(location: location)
         }).disposed(by: disposeBag)
         
-        routes.asObservable().subscribe(onNext: { routes in
-            routes.forEach { route in
-                self._getPolylines(routeId: route.routeId)
-            }
-        }).disposed(by: disposeBag)
+//        routes.asObservable().subscribe(onNext: { routes in
+//            routes.forEach { route in
+//                self._getPolylines(routeId: route.routeId)
+//            }
+//        }).disposed(by: disposeBag)
     }
     
     private func _updateRoutes(location: CLLocationCoordinate2D) {
         self.busInfoProvider.nearbyBusLines(lat: location.latitude, lon: location.longitude)
             .subscribe(onSuccess: { (routes) in
-                self.routes.value = routes
+                self._processRoutes(routes: routes)
             }, onError: { error in
                 print(error.localizedDescription)
             }).disposed(by: self.disposeBag)
     }
+    
+    private func _processRoutes(routes: [RouteModel]) {
+        let oldRoutes = Set(self.routes.value.map { $0.routeId })
+        let newRoutes = Set(routes.map { $0.routeId })
+        let diff = oldRoutes.symmetricDifference(newRoutes)
+        let toRemove = diff.intersection(oldRoutes)
+        let toAdd = diff.intersection(newRoutes)
+        
+        var polylinesToRemove = [RouteID : [MKPolyline]]()
+        var updatedDisplayValues = polylinesToDisplay.value
+        toRemove.forEach { routeId in
+            if let polylines = polylinesToDisplay.value[routeId] {
+                polylinesToRemove[routeId] = polylines
+                updatedDisplayValues[routeId] = nil
+            }
+        }
+        self.polylinesToDisplay.value = updatedDisplayValues
+        self.polylinesToRemove.value = polylinesToRemove
+        
+        toAdd.forEach { self._getPolylines(routeId: $0) }
+        
+        self.routes.value = routes
+    }
+    
+    // get routes
+    // diff new with old, determine which to hide
+        // copy toRemove from toDisplay to toRemove
+    // determine which new ones to fetch, fetch
+    // add new polylines to display
     
     private func _getPolylines(routeId: String) {
         busInfoProvider.polylinesForRoute(routeId: routeId)
@@ -89,7 +119,7 @@ class MainMapViewModel {
                 for line in mkPolylines {
                     self.colorMap[line] = color
                 }
-                self.polylines.value[routeId] = mkPolylines
+                self.polylinesToDisplay.value[routeId] = mkPolylines
                 
             }, onError: { error in
                 //print(error.localizedDescription)

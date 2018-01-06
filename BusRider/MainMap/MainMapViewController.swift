@@ -48,12 +48,16 @@ class MainMapViewController: UIViewController, MKMapViewDelegate {
             })
         }).disposed(by: disposeBag)
         
-        viewModel.polylines.asObservable()
+        viewModel.polylinesToDisplay.asObservable()
             .subscribe(onNext: { polylines in
-                self._removeAppropriatePolylines(new: polylines, displayed: self.viewModel.displayedPolylines)
-                let toAdd = self._diffPolylines(new: polylines, displayed: self.viewModel.displayedPolylines)
-                self._addPolylines(polylines: toAdd)
-                self.viewModel.displayedPolylines = polylines
+                self._addPolylines(polylines: polylines)
+            }).disposed(by: disposeBag)
+    
+        viewModel.polylinesToRemove.asObservable()
+            .subscribe(onNext: {polylines in
+                for (_, routeLines) in polylines {
+                    routeLines.forEach(self.mapView.remove)
+                }
             }).disposed(by: disposeBag)
     }
     
