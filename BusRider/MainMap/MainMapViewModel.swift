@@ -27,7 +27,7 @@ class MainMapViewModel {
     //output
     var routes: Variable<[RouteModel]>
     var polylines = Variable<[RouteID : [MKPolyline]]>([:])
-    var previousPolylines = [RouteID : [MKPolyline]]()
+    var displayedPolylines = [RouteID : [MKPolyline]]()
     var colorMap = [MKPolyline : UIColor]()
 
     private var busInfoProvider = BusInfoProvider()
