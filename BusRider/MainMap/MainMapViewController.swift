@@ -50,7 +50,9 @@ class MainMapViewController: UIViewController, MKMapViewDelegate {
         
         viewModel.polylinesToDisplay.asObservable()
             .subscribe(onNext: { polylines in
-                self._addPolylines(polylines: polylines)
+                for (_, routeLines) in polylines {
+                    routeLines.forEach(self.mapView.add)
+                }
             }).disposed(by: disposeBag)
     
         viewModel.polylinesToRemove.asObservable()
@@ -64,34 +66,6 @@ class MainMapViewController: UIViewController, MKMapViewDelegate {
     @objc func routeButtonPressed(sender: UIButton) {
         if let route = routeButtonsViewController?.buttonInfo[sender]?.route {
             self._showDirectionSelection(routeId: route.routeId)
-        }
-    }
-    
-    private func _removeAppropriatePolylines(new: [String: [MKPolyline]], displayed: [String : [MKPolyline]]) {
-        let newHash = Set(new.keys)
-        let oldHash = Set(displayed.keys)
-        let diff = newHash.symmetricDifference(oldHash)
-        let toRemove = diff.intersection(oldHash)
-        toRemove.forEach({ routeId in
-            if let polylines = displayed[routeId] {
-                polylines.forEach(mapView.remove)
-            }
-        })
-    }
-    
-    private func _diffPolylines(new: [String : [MKPolyline]], displayed: [String : [MKPolyline]]) -> [String : [MKPolyline]] {
-        let newHash = Set(new.keys)
-        let oldHash = Set(displayed.keys)
-        let diff = newHash.symmetricDifference(oldHash)
-        let toAdd = diff.intersection(newHash)
-        var result = [String : [MKPolyline]]()
-        toAdd.forEach { result[$0] = new[$0] }
-        return result
-    }
-    
-    private func _addPolylines(polylines: [String : [MKPolyline]]) {
-        for (_, polylines) in polylines {
-            polylines.forEach(mapView.add)
         }
     }
     

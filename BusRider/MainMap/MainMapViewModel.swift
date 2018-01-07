@@ -63,11 +63,6 @@ class MainMapViewModel {
             self._updateRoutes(location: location)
         }).disposed(by: disposeBag)
         
-//        routes.asObservable().subscribe(onNext: { routes in
-//            routes.forEach { route in
-//                self._getPolylines(routeId: route.routeId)
-//            }
-//        }).disposed(by: disposeBag)
     }
     
     private func _updateRoutes(location: CLLocationCoordinate2D) {
@@ -79,6 +74,7 @@ class MainMapViewModel {
             }).disposed(by: self.disposeBag)
     }
     
+    /// update polylinesToRemove, polylinesToDisplay, and routes Variable.
     private func _processRoutes(routes: [RouteModel]) {
         let oldRoutes = Set(self.routes.value.map { $0.routeId })
         let newRoutes = Set(routes.map { $0.routeId })
@@ -101,12 +97,6 @@ class MainMapViewModel {
         
         self.routes.value = routes
     }
-    
-    // get routes
-    // diff new with old, determine which to hide
-        // copy toRemove from toDisplay to toRemove
-    // determine which new ones to fetch, fetch
-    // add new polylines to display
     
     private func _getPolylines(routeId: String) {
         busInfoProvider.polylinesForRoute(routeId: routeId)
