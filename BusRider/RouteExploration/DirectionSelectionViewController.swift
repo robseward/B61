@@ -35,6 +35,22 @@ class DirectionSelectionViewController: UIViewController {
             .bind(to: routeSymbolLabel.rx.text)
             .disposed(by: disposeBag)
         
+        viewModel.route.asObservable()
+            .subscribe(onNext: { (routeModel) in
+                guard let routeModel = routeModel else { return }
+                self.routeSymbolView.backgroundColor = routeModel.color
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.stopGroups.asObservable()
+            .subscribe( onNext: { groups in
+                guard groups.count >= 2 else { return }
+                let groupA = groups[0]
+                let groupB = groups[1]
+                self.directionButtonA.setTitle(groupA.name, for: .normal)
+                self.directionButtonB.setTitle(groupB.name, for: .normal)
+            }).disposed(by: disposeBag)
+            
     }
     
     func configureForRoute(routeId: String) {

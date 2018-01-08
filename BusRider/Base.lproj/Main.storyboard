@@ -235,7 +235,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="308"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="wZX-FW-j2K">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="wZX-FW-j2K">
                                 <rect key="frame" x="20" y="214" width="341" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="2pC-P0-hca"/>
@@ -263,7 +263,7 @@
                                     <constraint firstAttribute="width" constant="88" id="pqM-vo-rmy"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="gAv-3R-I3X">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="gAv-3R-I3X">
                                 <rect key="frame" x="20" y="116" width="341" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="NFm-Uw-lZ4"/>
