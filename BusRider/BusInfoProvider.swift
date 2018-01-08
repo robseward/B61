@@ -30,13 +30,10 @@ class BusInfoProvider {
         return observable
     }
     
-    func directionsForRoute(routeId: String) -> PrimitiveSequence<SingleTrait, [StopGroup]>{
+    func directionsForRoute(routeId: String) -> PrimitiveSequence<SingleTrait, StopGroupings>{
         let request = MTAService.stopsForRoute(routeId: routeId)
         let observable = provider.rx.request(request)
             .map(to: StopGroupings.self)
-            .map { groupingList -> [StopGroup] in
-                return groupingList.groupings
-            }
         
         return observable
     }

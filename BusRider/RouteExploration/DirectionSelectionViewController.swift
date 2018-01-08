@@ -9,38 +9,36 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import QuartzCore
 
-class DirectionSelectionViewController: UIViewController, UITableViewDelegate {
+class DirectionSelectionViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var routeId: String?
     var disposeBag = DisposeBag()
     var viewModel = DirectionSelectionViewModel()
     
+    @IBOutlet weak var directionButtonB: UIButton!
+    @IBOutlet weak var directionButtonA: UIButton!
+    @IBOutlet weak var routeSymbolView: UIView!
+    @IBOutlet weak var routeSymbolLabel: UILabel!
+    @IBOutlet weak var routeSymbolWidthConstraint: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.isHidden = false
-
-        guard let routeId = routeId else {
-            assert(false)
-            return
-        }
         
-        viewModel.items.asObservable()
-            .bind(to: tableView.rx.items(cellIdentifier: "Cell", cellType: UITableViewCell.self)) { (_, element, cell) in
-                cell.textLabel?.text = "\(element.name)"
+        routeSymbolView.layer.cornerRadius = routeSymbolWidthConstraint.constant / 2.0
+        
+        viewModel.route.asObservable()
+            .map { (routeModel) -> String in
+                return routeModel?.shortName ?? "-"
             }
-            .disposed(by: disposeBag)
-
-        
-        viewModel.loadStopGroupsForRoute(routeId: routeId)
-        
-        tableView.rx.modelSelected(StopGroup.self)
-            .subscribe( onNext: { stopGroup in
-                self.showStops(stopGroup: stopGroup)
-            })
+            .bind(to: routeSymbolLabel.rx.text)
             .disposed(by: disposeBag)
         
-        
+    }
+    
+    func configureForRoute(routeId: String) {
+        viewModel.routeId.value = routeId
     }
     
     func showStops(stopGroup: StopGroup) {

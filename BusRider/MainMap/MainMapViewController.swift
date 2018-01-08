@@ -18,6 +18,8 @@ class MainMapViewController: UIViewController, MKMapViewDelegate {
     var viewModel = MainMapViewModel()
     var routeButtonsViewController: RouteButtonsViewController?
     let disposeBag = DisposeBag()
+    @IBOutlet weak var routeExploreContainerView: UIView!
+    var directionSelectionViewController: DirectionSelectionViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +37,8 @@ class MainMapViewController: UIViewController, MKMapViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let routeViewController = segue.destination as? RouteButtonsViewController {
             self.routeButtonsViewController = routeViewController
+        } else if let directionSelectionViewController = segue.destination as? DirectionSelectionViewController {
+            self.directionSelectionViewController = directionSelectionViewController
         }
     }
     
@@ -69,7 +73,8 @@ class MainMapViewController: UIViewController, MKMapViewDelegate {
     
     @objc func routeButtonPressed(sender: UIButton) {
         if let route = routeButtonsViewController?.buttonInfo[sender]?.route {
-            self._showDirectionSelection(routeId: route.routeId)
+            //self._showDirectionSelection(routeId: route.routeId)
+            directionSelectionViewController?.configureForRoute(routeId: route.routeId)
         }
     }
     

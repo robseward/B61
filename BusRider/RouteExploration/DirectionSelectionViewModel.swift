@@ -11,15 +11,29 @@ import RxSwift
 import RxCocoa
 
 class DirectionSelectionViewModel {
-    var items = Variable<[StopGroup]>([])
-    var disposeBag = DisposeBag()
+    //input
+    var routeId = Variable<String?>(nil)
     
-    func loadStopGroupsForRoute(routeId: String) {
-        let provider = BusInfoProvider()
-        
+    //output
+    var stopGroups = Variable<[StopGroup]>([])
+    var route = Variable<RouteModel?>(nil)
+
+    private var disposeBag = DisposeBag()
+    private let provider = BusInfoProvider()
+    
+    init() {
+        routeId.asObservable()
+            .subscribe(onNext: { routeId in
+                guard let routeId = routeId else { return }
+                self._loadStopGroupsForRoute(routeId: routeId)
+            }).disposed(by: disposeBag)
+    }
+    
+    private func _loadStopGroupsForRoute(routeId: String) {
         provider.directionsForRoute(routeId: routeId)
-            .subscribe(onSuccess: { (groups) in
-                self.items.value = groups
+            .subscribe(onSuccess: { (stopGroupings) in
+                self.stopGroups.value = stopGroupings.groupings
+                self.route.value = stopGroupings.route
             }) { (error) in
                 print(error.localizedDescription)
             }.disposed(by: disposeBag)
