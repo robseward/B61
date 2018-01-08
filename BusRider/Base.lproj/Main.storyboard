@@ -80,18 +80,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="d0p-21-PHe">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="295"/>
                             </mapView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vUx-84-FaX" customClass="PassThroughView" customModule="BusRider" customModuleProvider="target">
-                                <rect key="frame" x="38" y="184" width="300" height="300"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="0D3-oq-jWd"/>
-                                    <constraint firstAttribute="width" constant="300" id="KgB-Aw-Zav"/>
-                                </constraints>
-                                <connections>
-                                    <segue destination="jFP-nJ-a2U" kind="embed" id="xO2-md-OvQ"/>
-                                </connections>
-                            </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kp8-9r-zrQ">
                                 <rect key="frame" x="0.0" y="359" width="375" height="308"/>
                                 <constraints>
@@ -101,19 +91,27 @@
                                     <segue destination="z8Y-ne-ENN" kind="embed" id="nqb-Uv-ak9"/>
                                 </connections>
                             </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vUx-84-FaX" customClass="PassThroughView" customModule="BusRider" customModuleProvider="target">
+                                <rect key="frame" x="37" y="61.5" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="0D3-oq-jWd"/>
+                                    <constraint firstAttribute="width" constant="300" id="KgB-Aw-Zav"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="jFP-nJ-a2U" kind="embed" id="xO2-md-OvQ"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="I08-09-s2z" firstAttribute="trailing" secondItem="d0p-21-PHe" secondAttribute="trailing" id="9fu-YA-Pyi"/>
-                            <constraint firstItem="d0p-21-PHe" firstAttribute="top" secondItem="I08-09-s2z" secondAttribute="top" id="Bjo-hT-xpu"/>
-                            <constraint firstItem="I08-09-s2z" firstAttribute="bottom" secondItem="d0p-21-PHe" secondAttribute="bottom" id="KkO-Nd-LRi"/>
+                            <constraint firstItem="Kp8-9r-zrQ" firstAttribute="top" secondItem="d0p-21-PHe" secondAttribute="bottom" id="44h-kO-q1M"/>
+                            <constraint firstItem="d0p-21-PHe" firstAttribute="trailing" secondItem="I08-09-s2z" secondAttribute="trailing" id="Cuv-Vf-WXK"/>
+                            <constraint firstItem="vUx-84-FaX" firstAttribute="centerY" secondItem="d0p-21-PHe" secondAttribute="centerY" id="Kbk-ml-THy"/>
                             <constraint firstItem="Kp8-9r-zrQ" firstAttribute="trailing" secondItem="I08-09-s2z" secondAttribute="trailing" id="P59-VW-7Pg"/>
-                            <constraint firstItem="vUx-84-FaX" firstAttribute="centerY" secondItem="WOI-MF-3g2" secondAttribute="centerY" id="QyU-9h-Vkn"/>
                             <constraint firstItem="Kp8-9r-zrQ" firstAttribute="leading" secondItem="I08-09-s2z" secondAttribute="leading" id="Tpl-b8-BXZ"/>
-                            <constraint firstItem="d0p-21-PHe" firstAttribute="top" secondItem="I08-09-s2z" secondAttribute="top" id="VaL-X1-Pqu"/>
-                            <constraint firstItem="d0p-21-PHe" firstAttribute="bottom" secondItem="Kp8-9r-zrQ" secondAttribute="bottom" id="aFf-v5-hig"/>
-                            <constraint firstItem="I08-09-s2z" firstAttribute="bottom" secondItem="d0p-21-PHe" secondAttribute="bottom" id="aa5-Iu-gtF"/>
-                            <constraint firstItem="d0p-21-PHe" firstAttribute="leading" secondItem="I08-09-s2z" secondAttribute="leading" id="rgo-iV-pdh"/>
+                            <constraint firstItem="I08-09-s2z" firstAttribute="bottom" secondItem="Kp8-9r-zrQ" secondAttribute="bottom" id="aFf-v5-hig"/>
+                            <constraint firstItem="d0p-21-PHe" firstAttribute="top" secondItem="I08-09-s2z" secondAttribute="top" id="shc-C5-z9Y"/>
+                            <constraint firstItem="d0p-21-PHe" firstAttribute="leading" secondItem="I08-09-s2z" secondAttribute="leading" id="t28-Li-bN2"/>
                             <constraint firstItem="vUx-84-FaX" firstAttribute="centerX" secondItem="I08-09-s2z" secondAttribute="centerX" id="yck-bj-ivd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="I08-09-s2z"/>

@@ -24,17 +24,21 @@ class MainMapViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var routeExplorerHeightConstraint: NSLayoutConstraint!
     
     let disposeBag = DisposeBag()
+    var tapGesture: UITapGestureRecognizer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         mapView.delegate = self
-        routeExplorerBottomConstraint.constant = -self.routeExplorerHeightConstraint.constant
-        routeExploreContainerView.alpha = 0
-        view.layoutIfNeeded()
+       
+        _hideRouteExploreView(animated: false)
         _addTrackingButton()
         _configureMap()
         _setupBindings()
+        
+        tapGesture = UITapGestureRecognizer(target: self, action: #selector(_mapTapped(sender:)))
+        mapView.addGestureRecognizer(tapGesture!)
+        //tapGesture?.isEnabled = true
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -46,6 +50,19 @@ class MainMapViewController: UIViewController, MKMapViewDelegate {
             self.routeButtonsViewController = routeViewController
         } else if let directionSelectionViewController = segue.destination as? DirectionSelectionViewController {
             self.directionSelectionViewController = directionSelectionViewController
+        }
+    }
+    
+    @objc private func _mapTapped(sender: UIGestureRecognizer) {
+        _hideRouteExploreView(animated: true)
+    }
+    
+    private func _hideRouteExploreView(animated: Bool = true) {
+        let duration = animated ? 0.3 : 0.0
+        UIView.animate(withDuration: duration) {
+            self.routeExplorerBottomConstraint.constant = -self.routeExplorerHeightConstraint.constant
+            self.routeExploreContainerView.alpha = 0
+            self.view.layoutIfNeeded()
         }
     }
     
