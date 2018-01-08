@@ -111,7 +111,7 @@ class MainMapViewController: UIViewController, MKMapViewDelegate {
         
         button.translatesAutoresizingMaskIntoConstraints = false
         let guide = view.safeAreaLayoutGuide
-        NSLayoutConstraint.activate([button.bottomAnchor.constraint(equalTo: guide.bottomAnchor, constant: -10), button.trailingAnchor.constraint(equalTo: guide.trailingAnchor, constant: -10)])
+        NSLayoutConstraint.activate([button.bottomAnchor.constraint(equalTo: routeExploreContainerView.topAnchor, constant: -10), button.trailingAnchor.constraint(equalTo: guide.trailingAnchor, constant: -10)])
     }
     
     //MARK: MapView delegate methods
