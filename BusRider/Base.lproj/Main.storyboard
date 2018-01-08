@@ -92,9 +92,11 @@
                                     <segue destination="jFP-nJ-a2U" kind="embed" id="xO2-md-OvQ"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kp8-9r-zrQ">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kp8-9r-zrQ">
                                 <rect key="frame" x="0.0" y="359" width="375" height="308"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="308" id="KYQ-OZ-5d9"/>
+                                </constraints>
                                 <connections>
                                     <segue destination="z8Y-ne-ENN" kind="embed" id="nqb-Uv-ak9"/>
                                 </connections>
@@ -105,8 +107,11 @@
                             <constraint firstItem="I08-09-s2z" firstAttribute="trailing" secondItem="d0p-21-PHe" secondAttribute="trailing" id="9fu-YA-Pyi"/>
                             <constraint firstItem="d0p-21-PHe" firstAttribute="top" secondItem="I08-09-s2z" secondAttribute="top" id="Bjo-hT-xpu"/>
                             <constraint firstItem="I08-09-s2z" firstAttribute="bottom" secondItem="d0p-21-PHe" secondAttribute="bottom" id="KkO-Nd-LRi"/>
+                            <constraint firstItem="Kp8-9r-zrQ" firstAttribute="trailing" secondItem="I08-09-s2z" secondAttribute="trailing" id="P59-VW-7Pg"/>
                             <constraint firstItem="vUx-84-FaX" firstAttribute="centerY" secondItem="WOI-MF-3g2" secondAttribute="centerY" id="QyU-9h-Vkn"/>
+                            <constraint firstItem="Kp8-9r-zrQ" firstAttribute="leading" secondItem="I08-09-s2z" secondAttribute="leading" id="Tpl-b8-BXZ"/>
                             <constraint firstItem="d0p-21-PHe" firstAttribute="top" secondItem="I08-09-s2z" secondAttribute="top" id="VaL-X1-Pqu"/>
+                            <constraint firstItem="d0p-21-PHe" firstAttribute="bottom" secondItem="Kp8-9r-zrQ" secondAttribute="bottom" id="aFf-v5-hig"/>
                             <constraint firstItem="I08-09-s2z" firstAttribute="bottom" secondItem="d0p-21-PHe" secondAttribute="bottom" id="aa5-Iu-gtF"/>
                             <constraint firstItem="d0p-21-PHe" firstAttribute="leading" secondItem="I08-09-s2z" secondAttribute="leading" id="rgo-iV-pdh"/>
                             <constraint firstItem="vUx-84-FaX" firstAttribute="centerX" secondItem="I08-09-s2z" secondAttribute="centerX" id="yck-bj-ivd"/>
@@ -117,6 +122,8 @@
                     <connections>
                         <outlet property="mapView" destination="d0p-21-PHe" id="ctB-dL-HSi"/>
                         <outlet property="routeExploreContainerView" destination="Kp8-9r-zrQ" id="46u-Jv-bNw"/>
+                        <outlet property="routeExplorerBottomConstraint" destination="aFf-v5-hig" id="ssI-UP-AjO"/>
+                        <outlet property="routeExplorerHeightConstraint" destination="KYQ-OZ-5d9" id="8Js-tc-mcI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9yY-uN-Jk4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -283,6 +290,7 @@
                             <constraint firstItem="gAv-3R-I3X" firstAttribute="leading" secondItem="oub-Os-BMp" secondAttribute="leading" id="jbm-1p-NDc"/>
                             <constraint firstItem="wZX-FW-j2K" firstAttribute="leading" secondItem="oub-Os-BMp" secondAttribute="leading" id="wCE-Uz-NAK"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="HIK-QW-eUZ"/>
                     </view>
                     <connections>
                         <outlet property="directionButtonA" destination="gAv-3R-I3X" id="HIs-TS-Avc"/>

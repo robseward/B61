@@ -14,17 +14,24 @@ import Action
 
 class MainMapViewController: UIViewController, MKMapViewDelegate {
 
-    @IBOutlet weak var mapView: MKMapView!
     var viewModel = MainMapViewModel()
     var routeButtonsViewController: RouteButtonsViewController?
-    let disposeBag = DisposeBag()
-    @IBOutlet weak var routeExploreContainerView: UIView!
     var directionSelectionViewController: DirectionSelectionViewController?
+    
+    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var routeExploreContainerView: UIView!
+    @IBOutlet weak var routeExplorerBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var routeExplorerHeightConstraint: NSLayoutConstraint!
+    
+    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         mapView.delegate = self
+        routeExplorerBottomConstraint.constant = -self.routeExplorerHeightConstraint.constant
+        routeExploreContainerView.alpha = 0
+        view.layoutIfNeeded()
         _addTrackingButton()
         _configureMap()
         _setupBindings()
@@ -75,6 +82,13 @@ class MainMapViewController: UIViewController, MKMapViewDelegate {
         if let route = routeButtonsViewController?.buttonInfo[sender]?.route {
             //self._showDirectionSelection(routeId: route.routeId)
             directionSelectionViewController?.configureForRoute(routeId: route.routeId)
+            
+            UIView.animate(withDuration: 0.3, animations: {
+                self.routeExplorerBottomConstraint.constant = 0
+                self.routeExploreContainerView.alpha = 1
+                self.view.layoutIfNeeded()
+            })
+
         }
     }
     

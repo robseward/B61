@@ -26,6 +26,11 @@ class DirectionSelectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        directionButtonA.setTitle("-", for: .normal)
+        directionButtonB.setTitle("-", for: .normal)
+        routeSymbolLabel.text = "-"
+        routeSymbolView.backgroundColor = UIColor.lightGray
+        
         routeSymbolView.layer.cornerRadius = routeSymbolWidthConstraint.constant / 2.0
         
         viewModel.route.asObservable()
